@@ -21,6 +21,8 @@ public:
    bool modifierClient(QString,QString,int);
    QSqlQueryModel *trierAc();
    QSqlQueryModel * trierDec();
+   QSqlQueryModel * rechercher_client(QString nom);
+
    ~Client(){}
 
     Client();

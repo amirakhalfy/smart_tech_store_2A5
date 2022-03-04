@@ -236,3 +236,10 @@ void MainWindow::on_pushButton_pdf_clicked()
 
                      delete document;
 }
+
+void MainWindow::on_rechercher_clicked()
+{
+    QString nom=ui->lineEdit_rechercher->text() ;
+        ui->tableView_rechercher->setModel(tmpclient.rechercher_client(nom)) ;
+
+}

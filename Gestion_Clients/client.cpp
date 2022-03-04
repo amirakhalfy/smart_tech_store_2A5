@@ -67,7 +67,8 @@ void Client::setprenom(QString n){
     }
 
     bool Client::modifierClient(QString nom,QString prenom,int cin)
-{ QSqlQuery query;
+{
+      QSqlQuery query;
             query.prepare("update client set nom=:nom,prenom=:prenom where cin=:cin");
             query.bindValue(":cin",cin);
              query.bindValue(":nom", nom);
@@ -119,7 +120,24 @@ void Client::setprenom(QString n){
   }
 
 
+  QSqlQueryModel * Client::rechercher_client(QString nom)
+   {
+      QSqlQuery * q = new  QSqlQuery ();
+   QSqlQueryModel * model= new QSqlQueryModel();
 
+   q->prepare("SELECT * FROM client WHERE  nom LIKE '"+nom+"%'");
+   q->exec();
+   model->setQuery(*q);
+
+
+   model->setHeaderData(0, Qt::Horizontal, QObject::tr("nom"));
+   model->setHeaderData(1, Qt::Horizontal, QObject::tr("prenom"));
+   model->setHeaderData(2, Qt::Horizontal, QObject::tr("cin"));
+
+
+
+   return model ;
+   }
 
 
 

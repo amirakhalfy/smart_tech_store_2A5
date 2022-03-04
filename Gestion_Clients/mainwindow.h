@@ -34,6 +34,8 @@ private slots:
 
     void on_pushButton_pdf_clicked();
 
+    void on_rechercher_clicked();
+
 private:
     Ui::MainWindow *ui;
     Client tmpclient;
