@@ -47,6 +47,7 @@ void MainWindow::on_ajouter_clicked()
 
 
         Client c(cin,nom,prenom);
+
       bool test =  c.addClient();
         if(test)
         {
@@ -59,7 +60,7 @@ void MainWindow::on_ajouter_clicked()
         }
           else{
               QMessageBox::critical(nullptr, QObject::tr("ajouter une client"),
-                          QObject::tr("Erreur !.\n"
+                          QObject::tr("Erreur ! Client existant\n"
                                       "Click Cancel to exit."), QMessageBox::Cancel);
 
         }
@@ -75,8 +76,27 @@ void MainWindow::on_afficher_clicked()
 
 void MainWindow::on_supprimer_clicked()
 {
+    QSqlQuery query2;
+
     int cin=ui->lineEditCin_supp->text().toInt();
-       bool test = tmpclient.removeClient(cin);
+    query2.prepare("SELECT CIN FROM CLIENT WHERE cin = :cin");
+    query2.bindValue(":cin",cin);
+    query2.exec();
+    query2.next();
+    int name=query2.value(0).toInt();
+    cout<<name;
+
+    if(name==cin && cin!=0)
+    {
+        QMessageBox::critical(nullptr, QObject::tr("cin existant"),
+                          QObject::tr("client existant.\n"
+                                      "Click Cancel to exit."), QMessageBox::Cancel);
+
+
+
+     bool test=  tmpclient.removeClient(cin);
+
+
         if(test)
         {
 
@@ -92,20 +112,42 @@ void MainWindow::on_supprimer_clicked()
                                       "Click Cancel to exit."), QMessageBox::Cancel);
 
         }
+        }
+    else {
+        QMessageBox::critical(nullptr, QObject::tr("id non ex"),
+                    QObject::tr("client n'existe pas.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+
+    }
 
 
 }
 
 void MainWindow::on_modifier_clicked()
 {
+    QSqlQuery query2;
+
     int cin;
         QString nom,prenom;
 
         cin=ui->lineEditCin_modif->text().toInt();
         nom=ui->lineEdit_nom_modif->text();
         prenom=ui->lineEdit_pren_modif->text();
+        query2.prepare("SELECT CIN FROM CLIENT WHERE cin = :cin");
+        query2.bindValue(":cin",cin);
+        query2.exec();
+        query2.next();
+        int name=query2.value(0).toInt();
+        cout<<name;
 
     bool test = tmpclient.modifierClient(nom,prenom,cin);
+    if(name==cin && cin!=0)
+    {
+        QMessageBox::critical(nullptr, QObject::tr("cin existant"),
+                          QObject::tr("client existant.\n"
+                                      "Click Cancel to exit."), QMessageBox::Cancel);
+
+
 
     if(test)
     {
@@ -120,6 +162,13 @@ void MainWindow::on_modifier_clicked()
           QMessageBox::critical(nullptr, QObject::tr("modifier une client"),
                       QObject::tr("Erreur !.\n"
                                   "Click Cancel to exit."), QMessageBox::Cancel);
+
+    }
+    }
+    else {
+        QMessageBox::critical(nullptr, QObject::tr("id non ex"),
+                    QObject::tr("client n'existe pas.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
 
     }
 

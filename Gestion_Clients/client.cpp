@@ -3,6 +3,7 @@
 #include <QString>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
+#include <QMessageBox>
 
 #include <QDebug>
 #include <QSqlRecord>
@@ -61,14 +62,19 @@ void Client::setprenom(QString n){
 
     bool Client::removeClient(int cin){
     QSqlQuery query;
+
     query.prepare("DELETE FROM CLIENT WHERE CIN = :CIN");
     query.bindValue(":CIN", cin);
     return    query.exec();
+
     }
 
     bool Client::modifierClient(QString nom,QString prenom,int cin)
 {
       QSqlQuery query;
+      query.prepare("SELECT CIN FROM CLIENT WHERE CIN = :CIN ");
+      query.exec();
+
             query.prepare("update client set nom=:nom,prenom=:prenom where cin=:cin");
             query.bindValue(":cin",cin);
              query.bindValue(":nom", nom);
@@ -138,7 +144,6 @@ void Client::setprenom(QString n){
 
    return model ;
    }
-
 
 
 
