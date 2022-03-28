@@ -2,6 +2,14 @@
 #define MAINWINDOW_H
 #include "produit.h"
 #include <QMainWindow>
+#include "stat_combo.h"
+#include "smtp.h"
+#include <QFileDialog>
+#include <QSortFilterProxyModel>
+#include <QTextTableFormat>
+#include <QStandardItemModel>
+#include <QDialog>
+#include "exportexcelobject.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -23,14 +31,39 @@ private slots:
 
     void on_pushButton_5_clicked();
 
-    void on_pushButton_clicked();
-
     void on_rechercher_clicked();
 
     void on_triparnom_clicked();
 
+    void on_triparnomdec_clicked();
+
+    void on_tripardate_clicked();
+
+    void on_panne_clicked();
+
+    void on_regler_clicked();
+
+    void on_traiter_clicked();
+
+
+
+    void on_stat_clicked();
+
+
+        void on_pushButton_2_clicked();
+
+        void on_pushButton_3_clicked();
+
+        void on_le_id_cursorPositionChanged(int arg1, int arg2);
+
+        void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     Produit P;
+ stat_combo *s;
+ int selected=0;
+    QStringList files;
+
 };
 #endif // MAINWINDOW_H

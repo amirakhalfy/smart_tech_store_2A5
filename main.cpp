@@ -2,13 +2,34 @@
 #include <QApplication>
 #include <QMessageBox>
 #include <QDebug>
-#include <QSqlTableModel>
+#include <QSound>
 
+#include <QSqlTableModel>
+#include <QTranslator>
+#include <QInputDialog>
 
 #include "connection.h"
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    QTranslator t;
+    QStringList languages;
+    languages <<"arabic"<<"French";
+    QString lang=QInputDialog::getItem(NULL,"select language","language",languages);
+    if(lang=="arabic"){
+        t.load(":/arabic.qm");
+
+    }
+   // else if(lang=="english"){
+
+       // t.load(":/english.qm");
+
+   // }
+    if(lang!="French")
+    {
+        a.installTranslator(&t);
+    }
+
     MainWindow w;
     Connection c;
     bool test=c.createconnect();

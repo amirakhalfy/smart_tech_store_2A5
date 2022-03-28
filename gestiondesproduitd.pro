@@ -1,8 +1,14 @@
 QT       += core gui
 
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 QT += sql
 CONFIG += c++11
+CONFIG += console
+QT += charts
+QT += core
+QT +=multimedia
+QT += core gui axcontainer
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -17,19 +23,34 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     connection.cpp \
+    exportexcelobject.cpp \
+    historique.cpp \
     main.cpp \
     mainwindow.cpp \
-    produit.cpp
+    notification.cpp \
+    produit.cpp \
+    stat_combo.cpp
 
 HEADERS += \
     connection.h \
+    exportexcelobject.h \
+    historique.h \
     mainwindow.h \
-    produit.h
+    notification.h \
+    produit.h \
+    stat_combo.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    stat_combo.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    res.qrc \
+    rs.qrc \
+    son.qrc \
+    translations.qrc
