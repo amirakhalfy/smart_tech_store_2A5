@@ -3,6 +3,7 @@
 #include <QtDebug>
 #include <QVariant>
 
+
 int ExportExcelObject::export2Excel()
 {
     if(fieldList.size() <= 0)

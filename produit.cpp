@@ -300,3 +300,5 @@ notifyIcon->showMessage("notification","produit réglé !",QSystemTrayIcon::Info
 
 
 
+
+

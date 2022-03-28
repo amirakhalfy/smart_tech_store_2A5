@@ -13,3 +13,4 @@ void closeConnection();
 
 };
 #endif // CONNECTION_H
+

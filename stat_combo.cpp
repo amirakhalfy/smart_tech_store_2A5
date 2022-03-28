@@ -151,3 +151,4 @@ chartView->show();
     chartView->show();
     }
 
+

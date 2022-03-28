@@ -18,6 +18,7 @@
 #include <QObject>
 #include <QDebug>
 class historique
+
 {
 public:
     historique();
