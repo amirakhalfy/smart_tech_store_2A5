@@ -785,6 +785,9 @@ release/client.o: ../Gestion_Clients/client.cpp ../Gestion_Clients/client.h \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qrubberband.h \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QTabWidget \
+		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QMessageBox \
+		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qmessagebox.h \
+		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qdialog.h \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QDebug \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtSql/QSqlRecord \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtSql/qsqlrecord.h
@@ -1391,40 +1394,6 @@ release/mainwindow.o: ../Gestion_Clients/mainwindow.cpp ../Gestion_Clients/mainw
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qtablewidget.h \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qtableview.h \
 		ui_mainwindow.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QVariant \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QGroupBox \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qgroupbox.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QHeaderView \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QLineEdit \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qtextcursor.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qtextformat.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qpen.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qtextoption.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QMenuBar \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qmenubar.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qmenu.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QStatusBar \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/qstatusbar.h \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QTabWidget \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QTableView \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtSql/QSqlError \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtCore/QDebug \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtSql/QSqlRecord \
@@ -1444,7 +1413,9 @@ release/mainwindow.o: ../Gestion_Clients/mainwindow.cpp ../Gestion_Clients/mainw
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qpagelayout.h \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qpagesize.h \
 		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/QPainter \
-		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qpainter.h
+		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qpainter.h \
+		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qtextoption.h \
+		C:/Qt/Qt5.9.9/5.9.9/mingw53_32/include/QtGui/qpen.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\Gestion_Clients\mainwindow.cpp
 
 release/moc_mainwindow.o: release/moc_mainwindow.cpp 

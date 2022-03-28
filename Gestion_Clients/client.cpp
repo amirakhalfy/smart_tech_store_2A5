@@ -48,11 +48,11 @@ void Client::setprenom(QString n){
 
     bool Client::addClient(){
         QSqlQuery query;
-        query.prepare("INSERT INTO CLIENT (CIN, NOM, PRENOM)"
-                      "VALUES(:CIN, :NOM, :PRENOM)");
+        query.prepare("INSERT INTO CLIENTS (CIN, NOM_CLT, PRENOM_CLT)"
+                      "VALUES(:CIN, :NOM_CLT, :PRENOM_CLT)");
         query.bindValue(":CIN",cin);
-        query.bindValue(":NOM",nom);
-        query.bindValue(":PRENOM",prenom);
+        query.bindValue(":NOM_CLT",nom);
+        query.bindValue(":PRENOM_CLT",prenom);
 
 
         return query.exec();
@@ -63,7 +63,7 @@ void Client::setprenom(QString n){
     bool Client::removeClient(int cin){
     QSqlQuery query;
 
-    query.prepare("DELETE FROM CLIENT WHERE CIN = :CIN");
+    query.prepare("DELETE FROM CLIENTS WHERE CIN = :CIN");
     query.bindValue(":CIN", cin);
     return    query.exec();
 
@@ -72,10 +72,10 @@ void Client::setprenom(QString n){
     bool Client::modifierClient(QString nom,QString prenom,int cin)
 {
       QSqlQuery query;
-      query.prepare("SELECT CIN FROM CLIENT WHERE CIN = :CIN ");
+      query.prepare("SELECT CIN FROM CLIENTS WHERE CIN = :CIN ");
       query.exec();
 
-            query.prepare("update client set nom=:nom,prenom=:prenom where cin=:cin");
+            query.prepare("update clients set nom_clt=:nom,prenom_clt=:prenom where cin=:cin");
             query.bindValue(":cin",cin);
              query.bindValue(":nom", nom);
               query.bindValue(":prenom", prenom);
@@ -88,10 +88,10 @@ void Client::setprenom(QString n){
 
             QSqlQueryModel * model= new QSqlQueryModel();
 
-        model->setQuery("select * from client");
-        model->setHeaderData(0, Qt::Horizontal, QObject::tr("nom"));
-        model->setHeaderData(1, Qt::Horizontal, QObject::tr("prenom"));
-        model->setHeaderData(2, Qt::Horizontal, QObject::tr("cin"));
+        model->setQuery("select * from clients");
+        model->setHeaderData(0, Qt::Horizontal, QObject::tr("cin"));
+        model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+        model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
 
             return model;
         }
@@ -100,12 +100,12 @@ void Client::setprenom(QString n){
   {
       QSqlQuery * q = new  QSqlQuery ();
                QSqlQueryModel * model = new  QSqlQueryModel ();
-               q->prepare("SELECT * FROM CLIENT order by nom ASC");
+               q->prepare("SELECT * FROM CLIENTS order by nom ASC");
                q->exec();
                model->setQuery(*q);
-               model->setHeaderData(0, Qt::Horizontal, QObject::tr("nom"));
-               model->setHeaderData(1, Qt::Horizontal, QObject::tr("prenom"));
-               model->setHeaderData(2, Qt::Horizontal, QObject::tr("cin"));
+               model->setHeaderData(0, Qt::Horizontal, QObject::tr("cin"));
+               model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+               model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
 
                return model;
 
@@ -115,12 +115,12 @@ void Client::setprenom(QString n){
   {
             QSqlQuery * q = new  QSqlQuery ();
                    QSqlQueryModel * model = new  QSqlQueryModel ();
-                   q->prepare("SELECT * FROM CLIENT order by NOM DESC");
+                   q->prepare("SELECT * FROM CLIENTS order by NOM DESC");
                    q->exec();
                    model->setQuery(*q);
-                   model->setHeaderData(0, Qt::Horizontal, QObject::tr("nom"));
-                   model->setHeaderData(1, Qt::Horizontal, QObject::tr("prenom"));
-                   model->setHeaderData(2, Qt::Horizontal, QObject::tr("cin"));
+                   model->setHeaderData(0, Qt::Horizontal, QObject::tr("cin"));
+                   model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+                   model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
 
                    return model;
   }
@@ -131,7 +131,7 @@ void Client::setprenom(QString n){
       QSqlQuery * q = new  QSqlQuery ();
    QSqlQueryModel * model= new QSqlQueryModel();
 
-   q->prepare("SELECT * FROM client WHERE  nom LIKE '"+nom+"%'");
+   q->prepare("SELECT * FROM clients WHERE  nom LIKE '"+nom+"%'");
    q->exec();
    model->setQuery(*q);
 
@@ -145,6 +145,67 @@ void Client::setprenom(QString n){
    return model ;
    }
 
+  QSqlQueryModel * Client::classification1()
+  {
+      QSqlQuery * q = new  QSqlQuery ();
+   QSqlQueryModel * model= new QSqlQueryModel();
+
+   q->prepare("SELECT cin, nom_clt, prenom_clt,prix_tot FROM clients,commandes WHERE clients.id_commande=commandes.id_commande and commandes.prix_tot>=0 and commandes.prix_tot<=500  ");
+   q->exec();
+   model->setQuery(*q);
+
+
+   model->setHeaderData(0, Qt::Horizontal, QObject::tr("cin"));
+   model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+   model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+   model->setHeaderData(3, Qt::Horizontal, QObject::tr("prix"));
+
+
+   return model ;
+
+  }
+
+  QSqlQueryModel * Client::classification2()
+  {
+              QSqlQuery * q = new  QSqlQuery ();
+           QSqlQueryModel * model= new QSqlQueryModel();
+
+           q->prepare("SELECT cin, nom_clt, prenom_clt,prix_tot FROM clients,commandes WHERE clients.id_commande=commandes.id_commande and commandes.prix_tot>=500 and commandes.prix_tot<=1500  ");
+           q->exec();
+           model->setQuery(*q);
+
+
+           model->setHeaderData(0, Qt::Horizontal, QObject::tr("cin"));
+           model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+           model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+           model->setHeaderData(3, Qt::Horizontal, QObject::tr("prix"));
+
+
+           return model ;
+
+  }
+
+
+  QSqlQueryModel * Client::classification3()
+  {
+      QSqlQuery * q = new  QSqlQuery ();
+   QSqlQueryModel * model= new QSqlQueryModel();
+
+   q->prepare("SELECT cin, nom_clt, prenom_clt,prix_tot FROM clients,commandes WHERE clients.id_commande=commandes.id_commande and commandes.prix_tot>=1500  ");
+   q->exec();
+   model->setQuery(*q);
+
+
+   model->setHeaderData(0, Qt::Horizontal, QObject::tr("cin"));
+   model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+   model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+   model->setHeaderData(3, Qt::Horizontal, QObject::tr("prix"));
+
+
+   return model ;
+
+
+  }
 
 
 

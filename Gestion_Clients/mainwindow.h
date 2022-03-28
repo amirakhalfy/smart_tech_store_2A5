@@ -36,6 +36,13 @@ private slots:
 
     void on_rechercher_clicked();
 
+
+    void on_class1_clicked();
+
+    void on_class2_clicked();
+
+    void on_class3_clicked();
+
 private:
     Ui::MainWindow *ui;
     Client tmpclient;

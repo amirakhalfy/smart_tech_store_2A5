@@ -76,6 +76,10 @@ public:
     QPushButton *rechercher;
     QTableView *tableView_rechercher;
     QWidget *tab_8;
+    QTableView *tableView_class;
+    QPushButton *class1;
+    QPushButton *class3;
+    QPushButton *class2;
     QWidget *tab_9;
     QLabel *label_8;
     QMenuBar *menubar;
@@ -90,7 +94,7 @@ public:
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         tabAjouter = new QTabWidget(centralwidget);
         tabAjouter->setObjectName(QStringLiteral("tabAjouter"));
-        tabAjouter->setGeometry(QRect(60, 60, 681, 411));
+        tabAjouter->setGeometry(QRect(60, 50, 681, 411));
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
         groupBox = new QGroupBox(tab_2);
@@ -229,6 +233,18 @@ public:
         tabAjouter->addTab(tab_7, QString());
         tab_8 = new QWidget();
         tab_8->setObjectName(QStringLiteral("tab_8"));
+        tableView_class = new QTableView(tab_8);
+        tableView_class->setObjectName(QStringLiteral("tableView_class"));
+        tableView_class->setGeometry(QRect(20, 40, 461, 251));
+        class1 = new QPushButton(tab_8);
+        class1->setObjectName(QStringLiteral("class1"));
+        class1->setGeometry(QRect(500, 80, 161, 28));
+        class3 = new QPushButton(tab_8);
+        class3->setObjectName(QStringLiteral("class3"));
+        class3->setGeometry(QRect(500, 240, 161, 28));
+        class2 = new QPushButton(tab_8);
+        class2->setObjectName(QStringLiteral("class2"));
+        class2->setGeometry(QRect(500, 160, 161, 28));
         tabAjouter->addTab(tab_8, QString());
         tab_9 = new QWidget();
         tab_9->setObjectName(QStringLiteral("tab_9"));
@@ -247,7 +263,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabAjouter->setCurrentIndex(1);
+        tabAjouter->setCurrentIndex(7);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -289,6 +305,9 @@ public:
         tabAjouter->setTabText(tabAjouter->indexOf(tab_6), QApplication::translate("MainWindow", "pdf", Q_NULLPTR));
         rechercher->setText(QApplication::translate("MainWindow", "Rechercher", Q_NULLPTR));
         tabAjouter->setTabText(tabAjouter->indexOf(tab_7), QApplication::translate("MainWindow", "recherche", Q_NULLPTR));
+        class1->setText(QApplication::translate("MainWindow", "classer < 500d", Q_NULLPTR));
+        class3->setText(QApplication::translate("MainWindow", "classer >1500", Q_NULLPTR));
+        class2->setText(QApplication::translate("MainWindow", "classer entre 500 et 1500", Q_NULLPTR));
         tabAjouter->setTabText(tabAjouter->indexOf(tab_8), QApplication::translate("MainWindow", "Classification", Q_NULLPTR));
         tabAjouter->setTabText(tabAjouter->indexOf(tab_9), QApplication::translate("MainWindow", "Scoring", Q_NULLPTR));
         label_8->setText(QString());

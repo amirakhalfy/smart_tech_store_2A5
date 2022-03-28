@@ -1,4 +1,4 @@
-#ifndef CLIENT_H
+        #ifndef CLIENT_H
 #define CLIENT_H
 #include <QString>
 #include <QSqlQuery>
@@ -22,6 +22,10 @@ public:
    QSqlQueryModel *trierAc();
    QSqlQueryModel * trierDec();
    QSqlQueryModel * rechercher_client(QString nom);
+   QSqlQueryModel * classification1();
+   QSqlQueryModel * classification2();
+   QSqlQueryModel * classification3();
+
 
    ~Client(){}
 

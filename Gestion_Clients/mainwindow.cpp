@@ -79,7 +79,7 @@ void MainWindow::on_supprimer_clicked()
     QSqlQuery query2;
 
     int cin=ui->lineEditCin_supp->text().toInt();
-    query2.prepare("SELECT CIN FROM CLIENT WHERE cin = :cin");
+    query2.prepare("SELECT CIN FROM CLIENTS WHERE cin = :cin");
     query2.bindValue(":cin",cin);
     query2.exec();
     query2.next();
@@ -88,7 +88,7 @@ void MainWindow::on_supprimer_clicked()
 
     if(name==cin && cin!=0)
     {
-        QMessageBox::critical(nullptr, QObject::tr("cin existant"),
+        QMessageBox::information(nullptr, QObject::tr("cin existant"),
                           QObject::tr("client existant.\n"
                                       "Click Cancel to exit."), QMessageBox::Cancel);
 
@@ -133,7 +133,7 @@ void MainWindow::on_modifier_clicked()
         cin=ui->lineEditCin_modif->text().toInt();
         nom=ui->lineEdit_nom_modif->text();
         prenom=ui->lineEdit_pren_modif->text();
-        query2.prepare("SELECT CIN FROM CLIENT WHERE cin = :cin");
+        query2.prepare("SELECT CIN FROM CLIENTS WHERE cin = :cin");
         query2.bindValue(":cin",cin);
         query2.exec();
         query2.next();
@@ -143,7 +143,7 @@ void MainWindow::on_modifier_clicked()
     bool test = tmpclient.modifierClient(nom,prenom,cin);
     if(name==cin && cin!=0)
     {
-        QMessageBox::critical(nullptr, QObject::tr("cin existant"),
+        QMessageBox::information(nullptr, QObject::tr("cin existant"),
                           QObject::tr("client existant.\n"
                                       "Click Cancel to exit."), QMessageBox::Cancel);
 
@@ -194,7 +194,7 @@ void MainWindow::on_pushButton_pdf_clicked()
                     QSqlQueryModel * Modal=new  QSqlQueryModel();
 
                     QSqlQuery qry;
-                     qry.prepare("SELECT * FROM CLIENT ");
+                     qry.prepare("SELECT * FROM CLIENTS ");
                      qry.exec();
                      Modal->setQuery(qry);
                      table_client.setModel(Modal);
@@ -290,5 +290,25 @@ void MainWindow::on_rechercher_clicked()
 {
     QString nom=ui->lineEdit_rechercher->text() ;
         ui->tableView_rechercher->setModel(tmpclient.rechercher_client(nom)) ;
+
+}
+
+
+
+void MainWindow::on_class1_clicked()
+{
+    ui->tableView_class->setModel(tmpclient.classification1()) ;
+
+}
+
+void MainWindow::on_class2_clicked()
+{
+    ui->tableView_class->setModel(tmpclient.classification2()) ;
+
+}
+
+void MainWindow::on_class3_clicked()
+{
+    ui->tableView_class->setModel(tmpclient.classification3()) ;
 
 }
