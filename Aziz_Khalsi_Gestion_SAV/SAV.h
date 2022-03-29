@@ -24,7 +24,9 @@ public:
     bool removeSAV(int);
    bool modifierSAV(QString,QString,int,QString,QString);
    ~SAV(){}
-
+   QSqlQueryModel *trierAc();
+      QSqlQueryModel * trierDec();
+      QSqlQueryModel * rechercher_SAV(int id_SAV);
     SAV();
 public:
     QString  nom,prenom,date_SAV,description;

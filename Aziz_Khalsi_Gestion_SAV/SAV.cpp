@@ -115,10 +115,63 @@ void SAV::setprenom(QString n){
         }
 
 
+  QSqlQueryModel * SAV::trierAc()
+    {
+        QSqlQuery * q = new  QSqlQuery ();
+                 QSqlQueryModel * model = new  QSqlQueryModel ();
+                 q->prepare("SELECT * FROM SAV order by id_SAV ASC");
+                 q->exec();
+                 model->setQuery(*q);
+                 model->setHeaderData(0, Qt::Horizontal, QObject::tr("id_SAV"));
+                model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+                model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+                  model->setHeaderData(4, Qt::Horizontal, QObject::tr("date_SAV"));
+                   model->setHeaderData(5, Qt::Horizontal, QObject::tr("description"));
+
+                 return model;
+
+    }
+
+    QSqlQueryModel * SAV::trierDec()
+    {
+              QSqlQuery * q = new  QSqlQuery ();
+                     QSqlQueryModel * model = new  QSqlQueryModel ();
+                     q->prepare("SELECT * FROM SAV order by id_SAV DESC");
+                     q->exec();
+                     model->setQuery(*q);
+                     model->setHeaderData(0, Qt::Horizontal, QObject::tr("id_SAV"));
+                    model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+                    model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+                      model->setHeaderData(4, Qt::Horizontal, QObject::tr("date_SAV"));
+                       model->setHeaderData(5, Qt::Horizontal, QObject::tr("description"));
+
+                     return model;
+    }
+
+
+    QSqlQueryModel * SAV::rechercher_SAV(int id_SAV)
+       {
+          QString res=QString::number(id_SAV);
+
+              QSqlQuery qry;
+
+
+               qry.prepare("SELECT* FROM SAV where id_SAV=:id_SAV");
+               qry.bindValue(":id_SAV",res);
+               qry.exec();
+               QSqlQueryModel *model= new QSqlQueryModel;
+          model->setQuery(qry);
+
+          model->setHeaderData(0, Qt::Horizontal, QObject::tr("id_SAV"));
+         model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+         model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+           model->setHeaderData(4, Qt::Horizontal, QObject::tr("date_SAV"));
+            model->setHeaderData(5, Qt::Horizontal, QObject::tr("description"));
 
 
 
-
+       return model ;
+     }
 
 
 

@@ -17,14 +17,17 @@
    <widget class="QTabWidget" name="tabAjouter">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>60</y>
+      <x>10</x>
+      <y>20</y>
       <width>661</width>
       <height>421</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">font: 8pt &quot;Ravie&quot;;</string>
+    </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
@@ -33,8 +36,8 @@
      <widget class="QGroupBox" name="groupBox">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>30</y>
+        <x>30</x>
+        <y>40</y>
         <width>631</width>
         <height>301</height>
        </rect>
@@ -186,6 +189,35 @@
         <string>id_SAV</string>
        </property>
       </widget>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>-10</y>
+         <width>611</width>
+         <height>401</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>../../aziz/png-clipart-til-death-do-us-apart-skull-illustration-t-shirt-clothing-skeleton-back-to-back-printing-tshirt-comics.png</pixmap>
+       </property>
+      </widget>
+      <zorder>label</zorder>
+      <zorder>label_2</zorder>
+      <zorder>label_3</zorder>
+      <zorder>lineEdit_pren</zorder>
+      <zorder>lineEdit_nom</zorder>
+      <zorder>ajouter</zorder>
+      <zorder>quitter_ajout</zorder>
+      <zorder>lineEdit_DateSAV</zorder>
+      <zorder>label_8</zorder>
+      <zorder>label_9</zorder>
+      <zorder>lineEdit_description</zorder>
+      <zorder>lineEditCin</zorder>
+      <zorder>label_13</zorder>
      </widget>
     </widget>
     <widget class="QWidget" name="tab">
@@ -241,6 +273,24 @@
        </property>
       </widget>
      </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>771</width>
+        <height>441</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../../aziz/wow mdp/firstquest.PNG</pixmap>
+      </property>
+     </widget>
+     <zorder>label_14</zorder>
+     <zorder>groupBox_4</zorder>
     </widget>
     <widget class="QWidget" name="tab_3">
      <attribute name="title">
@@ -314,6 +364,24 @@
        </property>
       </widget>
      </widget>
+     <widget class="QLabel" name="label_15">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>10</y>
+        <width>831</width>
+        <height>411</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../../aziz/wow mdp/firstquest.PNG</pixmap>
+      </property>
+     </widget>
+     <zorder>label_15</zorder>
+     <zorder>groupBox_3</zorder>
     </widget>
     <widget class="QWidget" name="tab_5">
      <attribute name="title">
@@ -403,37 +471,11 @@
         <string>Quitter</string>
        </property>
       </widget>
-      <widget class="QLabel" name="label_4">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>130</y>
-         <width>51</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Type sav</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="lineEdit_typeSAV_modif">
-       <property name="geometry">
-        <rect>
-         <x>80</x>
-         <y>130</y>
-         <width>113</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="maxLength">
-        <number>8</number>
-       </property>
-      </widget>
       <widget class="QLabel" name="label_10">
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>160</y>
+         <y>130</y>
          <width>51</width>
          <height>20</height>
         </rect>
@@ -446,7 +488,7 @@
        <property name="geometry">
         <rect>
          <x>80</x>
-         <y>160</y>
+         <y>130</y>
          <width>113</width>
          <height>22</height>
         </rect>
@@ -502,16 +544,151 @@
        </property>
       </widget>
      </widget>
+     <widget class="QLabel" name="label_16">
+      <property name="geometry">
+       <rect>
+        <x>-20</x>
+        <y>0</y>
+        <width>861</width>
+        <height>421</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../../aziz/wow mdp/firstquest.PNG</pixmap>
+      </property>
+     </widget>
+     <zorder>label_16</zorder>
+     <zorder>groupBox_2</zorder>
     </widget>
     <widget class="QWidget" name="tab_4">
      <attribute name="title">
       <string>Trier</string>
      </attribute>
+     <widget class="QLabel" name="label_17">
+      <property name="geometry">
+       <rect>
+        <x>-30</x>
+        <y>-10</y>
+        <width>921</width>
+        <height>471</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../../aziz/wow mdp/firstquest.PNG</pixmap>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_5">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>30</y>
+        <width>601</width>
+        <height>331</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Trier</string>
+      </property>
+      <widget class="QTableView" name="tableView_tri">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>30</y>
+         <width>461</width>
+         <height>241</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_TriASC">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>50</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Tri ASC</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_TriDESC">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>130</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Tri DESC</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>220</y>
+         <width>93</width>
+         <height>28</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Quitter</string>
+       </property>
+      </widget>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_6">
      <attribute name="title">
       <string>recherche</string>
      </attribute>
+     <widget class="QTableView" name="tableView_rechercher">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>130</y>
+        <width>451</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="rechercher">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>90</y>
+        <width>93</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Rechercher</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_rechercher">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>90</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="maxLength">
+       <number>8</number>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_7">
      <attribute name="title">

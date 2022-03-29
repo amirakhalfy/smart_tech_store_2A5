@@ -27,7 +27,11 @@ private slots:
 
     void on_modifier_clicked();
 
+    void on_pushButton_TriASC_clicked();
 
+    void on_pushButton_TriDESC_clicked();
+
+    void on_rechercher_clicked();
 
 private:
     Ui::MainWindow *ui;
