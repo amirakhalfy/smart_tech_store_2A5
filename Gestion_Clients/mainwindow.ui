@@ -18,13 +18,13 @@
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>50</y>
+      <y>60</y>
       <width>681</width>
       <height>411</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>7</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
@@ -171,37 +171,6 @@
        </property>
        <property name="text">
         <string>Afficher</string>
-       </property>
-      </widget>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab">
-     <attribute name="title">
-      <string>Afficher</string>
-     </attribute>
-     <widget class="QGroupBox" name="groupBox_4">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>40</y>
-        <width>591</width>
-        <height>301</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string>afficher</string>
-      </property>
-      <widget class="QPushButton" name="quitter_affich">
-       <property name="geometry">
-        <rect>
-         <x>450</x>
-         <y>240</y>
-         <width>93</width>
-         <height>28</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Quitter</string>
        </property>
       </widget>
      </widget>
@@ -520,7 +489,7 @@
     </widget>
     <widget class="QWidget" name="tab_8">
      <attribute name="title">
-      <string>Classification</string>
+      <string>Scoring</string>
      </attribute>
      <widget class="QTableView" name="tableView_class">
       <property name="geometry">
@@ -574,8 +543,31 @@
     </widget>
     <widget class="QWidget" name="tab_9">
      <attribute name="title">
-      <string>Scoring</string>
+      <string>Classification</string>
      </attribute>
+     <widget class="QTableView" name="tableView_cla">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>80</y>
+        <width>441</width>
+        <height>221</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_classer">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>180</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>classer </string>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QLabel" name="label_8">

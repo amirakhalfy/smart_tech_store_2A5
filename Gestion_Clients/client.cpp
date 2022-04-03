@@ -100,12 +100,14 @@ void Client::setprenom(QString n){
   {
       QSqlQuery * q = new  QSqlQuery ();
                QSqlQueryModel * model = new  QSqlQueryModel ();
-               q->prepare("SELECT * FROM CLIENTS order by nom ASC");
+               q->prepare("SELECT * FROM CLIENTS order by nom_clt ASC");
                q->exec();
                model->setQuery(*q);
                model->setHeaderData(0, Qt::Horizontal, QObject::tr("cin"));
                model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
                model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+               model->setHeaderData(3, Qt::Horizontal, QObject::tr("id commande"));
+
 
                return model;
 
@@ -115,12 +117,14 @@ void Client::setprenom(QString n){
   {
             QSqlQuery * q = new  QSqlQuery ();
                    QSqlQueryModel * model = new  QSqlQueryModel ();
-                   q->prepare("SELECT * FROM CLIENTS order by NOM DESC");
+                   q->prepare("SELECT * FROM CLIENTS order by NOM_CLT DESC");
                    q->exec();
                    model->setQuery(*q);
                    model->setHeaderData(0, Qt::Horizontal, QObject::tr("cin"));
                    model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
                    model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+                   model->setHeaderData(3, Qt::Horizontal, QObject::tr("id commande"));
+
 
                    return model;
   }
@@ -131,14 +135,15 @@ void Client::setprenom(QString n){
       QSqlQuery * q = new  QSqlQuery ();
    QSqlQueryModel * model= new QSqlQueryModel();
 
-   q->prepare("SELECT * FROM clients WHERE  nom LIKE '"+nom+"%'");
+   q->prepare("SELECT * FROM clients WHERE  nom_clt LIKE '"+nom+"%'");
    q->exec();
    model->setQuery(*q);
 
 
-   model->setHeaderData(0, Qt::Horizontal, QObject::tr("nom"));
-   model->setHeaderData(1, Qt::Horizontal, QObject::tr("prenom"));
-   model->setHeaderData(2, Qt::Horizontal, QObject::tr("cin"));
+   model->setHeaderData(0, Qt::Horizontal, QObject::tr("cin"));
+   model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
+   model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
+   model->setHeaderData(3, Qt::Horizontal, QObject::tr("id commande"));
 
 
 
@@ -147,18 +152,26 @@ void Client::setprenom(QString n){
 
   QSqlQueryModel * Client::classification1()
   {
-      QSqlQuery * q = new  QSqlQuery ();
+      QSqlQuery * q1 = new  QSqlQuery ();
+      QSqlQuery * q2 = new  QSqlQuery ();
+
    QSqlQueryModel * model= new QSqlQueryModel();
 
-   q->prepare("SELECT cin, nom_clt, prenom_clt,prix_tot FROM clients,commandes WHERE clients.id_commande=commandes.id_commande and commandes.prix_tot>=0 and commandes.prix_tot<=500  ");
-   q->exec();
-   model->setQuery(*q);
+   q1->prepare("SELECT  nom_clt, prenom_clt,score FROM clients,commandes WHERE clients.id_commande=commandes.id_commande and commandes.prix_tot>=0 and commandes.prix_tot<=500  ");
+   q2->prepare("UPDATE clients SET score=:s  where id_commande in (select id_commande from commandes where prix_tot>=0 and prix_tot<=500) ");
+    q2->bindValue(":s",10);
 
 
-   model->setHeaderData(0, Qt::Horizontal, QObject::tr("cin"));
-   model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
-   model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
-   model->setHeaderData(3, Qt::Horizontal, QObject::tr("prix"));
+   q1->exec();
+   q2->exec();
+
+   model->setQuery(*q1);
+
+
+   model->setHeaderData(0, Qt::Horizontal, QObject::tr("nom"));
+   model->setHeaderData(1, Qt::Horizontal, QObject::tr("prenom"));
+   model->setHeaderData(2, Qt::Horizontal, QObject::tr("score"));
+
 
 
    return model ;
@@ -168,17 +181,20 @@ void Client::setprenom(QString n){
   QSqlQueryModel * Client::classification2()
   {
               QSqlQuery * q = new  QSqlQuery ();
+              QSqlQuery * q2 = new  QSqlQuery ();
            QSqlQueryModel * model= new QSqlQueryModel();
 
-           q->prepare("SELECT cin, nom_clt, prenom_clt,prix_tot FROM clients,commandes WHERE clients.id_commande=commandes.id_commande and commandes.prix_tot>=500 and commandes.prix_tot<=1500  ");
-           q->exec();
-           model->setQuery(*q);
+           q->prepare("SELECT  nom_clt, prenom_clt,score FROM clients,commandes WHERE clients.id_commande=commandes.id_commande and commandes.prix_tot>=500 and commandes.prix_tot<=1500  ");
 
 
-           model->setHeaderData(0, Qt::Horizontal, QObject::tr("cin"));
-           model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
-           model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
-           model->setHeaderData(3, Qt::Horizontal, QObject::tr("prix"));
+           q2->prepare("UPDATE clients SET score=:s  where id_commande in (select id_commande from commandes where prix_tot>=500 and prix_tot<=1500) ");
+            q2->bindValue(":s",20);
+            q->exec();
+            q2->exec();
+            model->setQuery(*q);
+           model->setHeaderData(0, Qt::Horizontal, QObject::tr("nom"));
+           model->setHeaderData(1, Qt::Horizontal, QObject::tr("prenom"));
+           model->setHeaderData(2, Qt::Horizontal, QObject::tr("score"));
 
 
            return model ;
@@ -189,17 +205,22 @@ void Client::setprenom(QString n){
   QSqlQueryModel * Client::classification3()
   {
       QSqlQuery * q = new  QSqlQuery ();
+      QSqlQuery * q2 = new  QSqlQuery ();
+
    QSqlQueryModel * model= new QSqlQueryModel();
 
-   q->prepare("SELECT cin, nom_clt, prenom_clt,prix_tot FROM clients,commandes WHERE clients.id_commande=commandes.id_commande and commandes.prix_tot>=1500  ");
+   q->prepare("SELECT  nom_clt, prenom_clt,score FROM clients,commandes WHERE clients.id_commande=commandes.id_commande and commandes.prix_tot>=1500  ");
+   q2->prepare("UPDATE clients SET score=:s  where id_commande in (select id_commande from commandes where  prix_tot>=1500) ");
+    q2->bindValue(":s",30);
    q->exec();
-   model->setQuery(*q);
+    q2->exec();
+
+    model->setQuery(*q);
 
 
-   model->setHeaderData(0, Qt::Horizontal, QObject::tr("cin"));
-   model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
-   model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
-   model->setHeaderData(3, Qt::Horizontal, QObject::tr("prix"));
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("nom"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("prenom"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("score"));
 
 
    return model ;
@@ -208,7 +229,22 @@ void Client::setprenom(QString n){
   }
 
 
+ QSqlQueryModel * Client::classer()
+ {
+     QSqlQuery * q = new  QSqlQuery ();
+     QSqlQueryModel * model= new QSqlQueryModel();
+     q->prepare("SELECT  nom_clt, prenom_clt,categorie FROM clients , produits , commandes  where clients.produit = commandes.id_produit and commandes.id_produit=produits.id_produit  order by produits.categorie ");
 
+     q->exec();
+     model->setQuery(*q);
+
+
+
+     model->setHeaderData(0, Qt::Horizontal, QObject::tr("nom"));
+     model->setHeaderData(1, Qt::Horizontal, QObject::tr("prenom"));
+     model->setHeaderData(2, Qt::Horizontal, QObject::tr("categorie"));
+     return model;
+ }
 
 
 

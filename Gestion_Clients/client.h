@@ -26,6 +26,9 @@ public:
    QSqlQueryModel * classification2();
    QSqlQueryModel * classification3();
 
+   QSqlQueryModel * classer();
+
+
 
    ~Client(){}
 

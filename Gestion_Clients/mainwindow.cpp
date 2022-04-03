@@ -194,7 +194,7 @@ void MainWindow::on_pushButton_pdf_clicked()
                     QSqlQueryModel * Modal=new  QSqlQueryModel();
 
                     QSqlQuery qry;
-                     qry.prepare("SELECT * FROM CLIENTS ");
+                     qry.prepare("SELECT cin, nom_clt as nom, prenom_clt as prenom, score FROM CLIENTS ");
                      qry.exec();
                      Modal->setQuery(qry);
                      table_client.setModel(Modal);
@@ -310,5 +310,13 @@ void MainWindow::on_class2_clicked()
 void MainWindow::on_class3_clicked()
 {
     ui->tableView_class->setModel(tmpclient.classification3()) ;
+
+}
+
+
+
+void MainWindow::on_pushButton_classer_clicked()
+{
+    ui->tableView_cla->setModel(tmpclient.classer()) ;
 
 }

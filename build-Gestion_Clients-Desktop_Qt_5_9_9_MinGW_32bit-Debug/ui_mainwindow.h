@@ -44,9 +44,6 @@ public:
     QPushButton *quitter_ajout;
     QTableView *tableView;
     QPushButton *afficher;
-    QWidget *tab;
-    QGroupBox *groupBox_4;
-    QPushButton *quitter_affich;
     QWidget *tab_3;
     QGroupBox *groupBox_3;
     QLabel *label_7;
@@ -81,6 +78,8 @@ public:
     QPushButton *class3;
     QPushButton *class2;
     QWidget *tab_9;
+    QTableView *tableView_cla;
+    QPushButton *pushButton_classer;
     QLabel *label_8;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -94,7 +93,7 @@ public:
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         tabAjouter = new QTabWidget(centralwidget);
         tabAjouter->setObjectName(QStringLiteral("tabAjouter"));
-        tabAjouter->setGeometry(QRect(60, 50, 681, 411));
+        tabAjouter->setGeometry(QRect(60, 60, 681, 411));
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
         groupBox = new QGroupBox(tab_2);
@@ -136,15 +135,6 @@ public:
         afficher->setObjectName(QStringLiteral("afficher"));
         afficher->setGeometry(QRect(370, 240, 93, 28));
         tabAjouter->addTab(tab_2, QString());
-        tab = new QWidget();
-        tab->setObjectName(QStringLiteral("tab"));
-        groupBox_4 = new QGroupBox(tab);
-        groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
-        groupBox_4->setGeometry(QRect(30, 40, 591, 301));
-        quitter_affich = new QPushButton(groupBox_4);
-        quitter_affich->setObjectName(QStringLiteral("quitter_affich"));
-        quitter_affich->setGeometry(QRect(450, 240, 93, 28));
-        tabAjouter->addTab(tab, QString());
         tab_3 = new QWidget();
         tab_3->setObjectName(QStringLiteral("tab_3"));
         groupBox_3 = new QGroupBox(tab_3);
@@ -248,6 +238,12 @@ public:
         tabAjouter->addTab(tab_8, QString());
         tab_9 = new QWidget();
         tab_9->setObjectName(QStringLiteral("tab_9"));
+        tableView_cla = new QTableView(tab_9);
+        tableView_cla->setObjectName(QStringLiteral("tableView_cla"));
+        tableView_cla->setGeometry(QRect(30, 80, 441, 221));
+        pushButton_classer = new QPushButton(tab_9);
+        pushButton_classer->setObjectName(QStringLiteral("pushButton_classer"));
+        pushButton_classer->setGeometry(QRect(520, 180, 93, 28));
         tabAjouter->addTab(tab_9, QString());
         label_8 = new QLabel(centralwidget);
         label_8->setObjectName(QStringLiteral("label_8"));
@@ -263,7 +259,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabAjouter->setCurrentIndex(7);
+        tabAjouter->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -280,9 +276,6 @@ public:
         quitter_ajout->setText(QApplication::translate("MainWindow", "Quitter", Q_NULLPTR));
         afficher->setText(QApplication::translate("MainWindow", "Afficher", Q_NULLPTR));
         tabAjouter->setTabText(tabAjouter->indexOf(tab_2), QApplication::translate("MainWindow", "Ajouter", Q_NULLPTR));
-        groupBox_4->setTitle(QApplication::translate("MainWindow", "afficher", Q_NULLPTR));
-        quitter_affich->setText(QApplication::translate("MainWindow", "Quitter", Q_NULLPTR));
-        tabAjouter->setTabText(tabAjouter->indexOf(tab), QApplication::translate("MainWindow", "Afficher", Q_NULLPTR));
         groupBox_3->setTitle(QApplication::translate("MainWindow", "supprimer", Q_NULLPTR));
         label_7->setText(QApplication::translate("MainWindow", "cin", Q_NULLPTR));
         lineEditCin_supp->setText(QString());
@@ -308,8 +301,9 @@ public:
         class1->setText(QApplication::translate("MainWindow", "classer < 500d", Q_NULLPTR));
         class3->setText(QApplication::translate("MainWindow", "classer >1500", Q_NULLPTR));
         class2->setText(QApplication::translate("MainWindow", "classer entre 500 et 1500", Q_NULLPTR));
-        tabAjouter->setTabText(tabAjouter->indexOf(tab_8), QApplication::translate("MainWindow", "Classification", Q_NULLPTR));
-        tabAjouter->setTabText(tabAjouter->indexOf(tab_9), QApplication::translate("MainWindow", "Scoring", Q_NULLPTR));
+        tabAjouter->setTabText(tabAjouter->indexOf(tab_8), QApplication::translate("MainWindow", "Scoring", Q_NULLPTR));
+        pushButton_classer->setText(QApplication::translate("MainWindow", "classer ", Q_NULLPTR));
+        tabAjouter->setTabText(tabAjouter->indexOf(tab_9), QApplication::translate("MainWindow", "Classification", Q_NULLPTR));
         label_8->setText(QString());
     } // retranslateUi
 

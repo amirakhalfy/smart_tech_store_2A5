@@ -43,6 +43,10 @@ private slots:
 
     void on_class3_clicked();
 
+
+
+    void on_pushButton_classer_clicked();
+
 private:
     Ui::MainWindow *ui;
     Client tmpclient;
