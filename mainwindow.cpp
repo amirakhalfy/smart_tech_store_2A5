@@ -6,9 +6,12 @@
 #include<QSqlQueryModel>
 #include <string>
 #include <iostream>
-
+#include <QTextStream>
 #include "stat_combo.h"
 #include <ui_stat_combo.h>
+#include <QTextDocument>
+#include <QPrintDialog>
+#include <QPrinter>
 using namespace std;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -225,7 +228,7 @@ void MainWindow::on_tri_clicked()
 
 
     QSqlQueryModel* model=new QSqlQueryModel();
-    model->setQuery("select* from COMMANDE order by PRIX_TOT desc ");
+    model->setQuery("select* from COMMANDE  order by PRIX_TOT desc ");
     model->setHeaderData(0, Qt::Horizontal, QObject::tr("ID_COMMAND"));
     model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
     model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
@@ -281,3 +284,136 @@ void MainWindow::on_pushButton_6_clicked()
          s->choix_pie();
          s->show();
 }
+
+void MainWindow::on_pushButton_7_clicked()
+{
+
+
+    int id=ui->id_fact->text().toInt();
+    QSqlQuery query;
+    query.prepare("SELECT etat FROM Commande where ID_COMMAND=:id ");
+    query.bindValue(":id",id);
+    query.exec();
+    query.next();
+    int etat=query.value(0).toInt();
+    if(etat==1)
+    { QMessageBox::information(nullptr, QObject::tr("ok"),
+                               QObject::tr("commande deja annuler\n"
+                                           "click cancel to exit."),QMessageBox::Cancel);
+
+
+    }
+    else if(etat==2)
+    {   QMessageBox::information(nullptr, QObject::tr("ok"),
+                                 QObject::tr("commande deja payee\n"
+                                             "click cancel to exit."),QMessageBox::Cancel);}
+    else
+    {
+        query.prepare("update COMMANDE set etat= 2 where ID_COMMAND=:id");
+        query.bindValue(":id",id);
+
+         query.exec();
+    QSqlDatabase db;
+                        QTableView table_commande;
+                        QSqlQueryModel * Modal=new  QSqlQueryModel();
+
+                        QSqlQuery qry;
+                         qry.prepare("SELECT * FROM Commande where ID_COMMAND=:id ");
+                         qry.bindValue(":id",id);
+                         qry.exec();
+                         Modal->setQuery(qry);
+                         table_commande.setModel(Modal);
+
+
+
+                         db.close();
+
+
+                         QString strStream;
+                         QTextStream out(&strStream);
+
+
+                         const int rowCount = table_commande.model()->rowCount();
+                         const int columnCount =  table_commande.model()->columnCount();
+
+
+                         const QString strTitle ="Document";
+
+
+                         out <<  "<html>\n"
+                                 "<img src='C:/Users/Akram/Pictures/R.png' height='120' width='120'/>"
+                             "<head>\n"
+                                 "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+                                 "<img src='C:/Users/Akram/Pictures/R.png.png'>"
+                             <<  QString("<title>%1</title>\n").arg(strTitle)
+                             <<  "</head>\n"
+                             "<body bgcolor=#ffffff link=#5000A0>\n"
+                            << QString("<h3 style=\" font-size: 50px; font-family: Arial, Helvetica, sans-serif; color: #b80b32; font-weight: lighter; text-align: center;\">%1</h3>\n").arg("COMMANDE")
+                            <<"<br>"
+
+                            <<"<table border=1 cellspacing=0 cellpadding=2 width=\"100%\">\n";
+                         out << "<thead><tr bgcolor=#f0f0f0>";
+                         for (int column = 0; column < columnCount; column++)
+                             if (!table_commande.isColumnHidden(column))
+                                 out << QString("<th>%1</th>").arg(table_commande.model()->headerData(column, Qt::Horizontal).toString());
+                         out << "</tr></thead>\n";
+
+                         for (int row = 0; row < rowCount; row++) {
+                             out << "<tr>";
+                             for (int column = 0; column < columnCount; column++) {
+                                 if (!table_commande.isColumnHidden(column)) {
+                                     QString data = table_commande.model()->data(table_commande.model()->index(row, column)).toString().simplified();
+                                     out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+                                 }
+                             }
+                             out << "</tr>\n";
+                         }
+                         out <<  "</table>\n"
+                                 "<br><br>"
+                                 <<"<br>"
+                                 <<"<table border=1 cellspacing=0 cellpadding=2>\n";
+
+
+                             out << "<thead><tr bgcolor=#f0f0f0>";
+
+                                 out <<  "</table>\n"
+
+                             "</body>\n"
+                             "</html>\n";
+
+                         QTextDocument *document = new QTextDocument();
+                         document->setHtml(strStream);
+
+                         QPrinter printer;
+                         QPrintDialog *dialog = new QPrintDialog(&printer, NULL);
+                         if (dialog->exec() == QDialog::Accepted) {
+
+                             QLabel lab;
+                              QPixmap pixmap("C:/Users/Akram/Pictures/R.png");
+                             lab.setPixmap(pixmap);
+                             QPainter painter(&lab);
+                             //QPrinter printer(QPrinter::PrinterResolution);
+
+                             //pixmap.load("aze.png");
+                            // painter.drawPixmap(0,0,this->width(),this->height(),pixmap);
+                            // painter.drawPixmap(10,10,50,50, pixmap);
+
+                             document->print(&printer);
+                         }
+
+
+                         printer.setOutputFormat(QPrinter::PdfFormat);
+                         printer.setPaperSize(QPrinter::A4);
+                         printer.setOutputFileName("Document.pdf");
+                         printer.setPageMargins(QMarginsF(15, 15, 15, 15));
+
+
+
+                         delete document;
+    }
+}
+
+
+
+
+
