@@ -8,6 +8,18 @@
 #include <QSqlRecord>
 #include <QMessageBox>
 #include <iostream>
+#include <QMessageBox>
+#include <QApplication>
+#include<QSqlQueryModel>
+#include <string>
+#include <QTextStream>
+#include "stat_combo.h"
+#include <ui_stat_combo.h>
+#include <QTextDocument>
+#include <QPrintDialog>
+#include <QPrinter>
+#include "remboursement.h"
+
 
 using std::uint8_t;
 using namespace std;
@@ -182,5 +194,77 @@ void MainWindow::on_rechercher_clicked()
 {
     int id_SAV=ui->lineEdit_rechercher->text().toInt() ;
         ui->tableView_rechercher->setModel(tmpSAV.rechercher_SAV(id_SAV)) ;
+
+}
+
+void MainWindow::on_pushButton_5_clicked()
+{
+
+    QSqlQuery query;
+     int id=ui->id->text().toInt();
+
+    query.prepare("update SAV set ETAT = 1 where ID_SAV=:id");
+    query.bindValue(":id",id);
+
+     query.exec();
+
+}
+
+void MainWindow::on_pushButton_6_clicked()
+{
+   stat_combo *s= new stat_combo();
+
+         s->setWindowTitle("statistique ComboBox");
+         s->choix_pie();
+         s->show();
+}
+
+
+void MainWindow::on_ajouter_2_clicked()
+{
+    int id_sav,prix;
+      QSqlQuery query2;
+    id_sav=ui->lineEditcin->text().toInt();
+    prix=ui->lineEditprix->text().toInt();
+
+
+        remboursement c(prix,id_sav);
+        query2.prepare("select id_sav from sav where id_sav=:id_sav");
+        query2.bindValue(":id_sav",id_sav);
+
+        query2.exec();
+        query2.next();
+        int name=query2.value(0).toInt();
+
+
+        if(name==id_sav && id_sav!=0)
+        {
+            QMessageBox::information(nullptr, QObject::tr("ok"),
+                    QObject::tr("id existe\n"
+                                "click cancel to exit."),QMessageBox::Cancel);
+
+           remboursement c(prix,id_sav);
+
+          bool test =  c.addremboursement();
+
+
+        if(test )
+        {
+            QMessageBox::information(nullptr, QObject::tr("ok"),
+                    QObject::tr("ajout effectué\n"
+                                "click cancel to exit."),QMessageBox::Cancel);
+
+        }
+        else
+            QMessageBox::information(nullptr, QObject::tr("not ok"),
+                    QObject::tr("ajout non effectué\n"
+                                "click cancel to exit."),QMessageBox::Cancel);
+    }
+        else
+            QMessageBox::information(nullptr, QObject::tr("ok"),
+                    QObject::tr("id n'existe pas\n"
+                                "click cancel to exit."),QMessageBox::Cancel);
+
+        ui->tableView_remboursement->setModel(tmpremboursement.afficherremboursement());
 
 }

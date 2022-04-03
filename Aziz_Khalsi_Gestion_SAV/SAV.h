@@ -10,7 +10,7 @@ class SAV
 public:
     SAV(int,QString,QString,QString,QString);
     void setid_SAV(int n);
-     void setdate_SAV(QString n);
+    void setdate_SAV(QString n);
     void setdescription(QString n);
     void setnom(QString n);
     void setprenom(QString n);

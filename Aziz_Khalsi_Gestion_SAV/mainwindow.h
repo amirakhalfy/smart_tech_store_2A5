@@ -5,6 +5,7 @@
 #include <QtSql>
 #include <QSqlDatabase>
 #include "SAV.h"
+#include "remboursement.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -33,8 +34,15 @@ private slots:
 
     void on_rechercher_clicked();
 
+    void on_pushButton_5_clicked();
+
+    void on_pushButton_6_clicked();
+
+    void on_ajouter_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     SAV tmpSAV;
+    remboursement tmpremboursement;
 };
 #endif // MAINWINDOW_H

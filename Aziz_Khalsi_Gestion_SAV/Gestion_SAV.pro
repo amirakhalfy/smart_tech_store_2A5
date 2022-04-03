@@ -1,5 +1,7 @@
 QT       += core gui
-
+QT+= sql
+ QT += charts
+    QT += printsupport
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 QT+=sql
 CONFIG += c++11
@@ -19,16 +21,20 @@ SOURCES += \
     SAV.cpp \
     connection.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    remboursement.cpp
 
 HEADERS += \
     SAV.h \
     connection.h \
     mainwindow.h \
-    mainwindow.h
+    mainwindow.h \
+    remboursement.h \
+    stat_combo.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    stat_combo.ui
 
 CONFIG += console
 QT += sql

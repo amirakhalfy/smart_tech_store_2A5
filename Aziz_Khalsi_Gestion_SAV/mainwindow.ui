@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTabWidget" name="tabAjouter">
+   <widget class="QTabWidget" name="modifier_2">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -24,10 +24,13 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 8pt &quot;Ravie&quot;;</string>
+     <string notr="true">font: 81 8pt &quot;Rockwell Extra Bold&quot;;
+color: rgb(17, 29, 255);
+background-color: rgb(255, 255, 255);
+</string>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
@@ -54,6 +57,9 @@
          <height>16</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);</string>
+       </property>
        <property name="text">
         <string>prenom</string>
        </property>
@@ -67,6 +73,9 @@
          <height>16</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);</string>
+       </property>
        <property name="text">
         <string>nom</string>
        </property>
@@ -74,7 +83,7 @@
       <widget class="QLineEdit" name="lineEdit_pren">
        <property name="geometry">
         <rect>
-         <x>70</x>
+         <x>80</x>
          <y>110</y>
          <width>113</width>
          <height>22</height>
@@ -84,7 +93,7 @@
       <widget class="QLineEdit" name="lineEdit_nom">
        <property name="geometry">
         <rect>
-         <x>70</x>
+         <x>80</x>
          <y>80</y>
          <width>113</width>
          <height>22</height>
@@ -100,6 +109,9 @@
          <height>28</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);</string>
+       </property>
        <property name="text">
         <string>ajouter</string>
        </property>
@@ -113,6 +125,9 @@
          <height>28</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);</string>
+       </property>
        <property name="text">
         <string>Quitter</string>
        </property>
@@ -120,9 +135,9 @@
       <widget class="QLineEdit" name="lineEdit_DateSAV">
        <property name="geometry">
         <rect>
-         <x>70</x>
-         <y>140</y>
-         <width>113</width>
+         <x>30</x>
+         <y>180</y>
+         <width>161</width>
          <height>22</height>
         </rect>
        </property>
@@ -133,11 +148,14 @@
       <widget class="QLabel" name="label_8">
        <property name="geometry">
         <rect>
-         <x>20</x>
-         <y>140</y>
+         <x>30</x>
+         <y>150</y>
          <width>51</width>
          <height>20</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
         <string>Date</string>
@@ -148,28 +166,21 @@
         <rect>
          <x>220</x>
          <y>30</y>
-         <width>61</width>
+         <width>101</width>
          <height>20</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);</string>
        </property>
        <property name="text">
         <string>Description</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_description">
-       <property name="geometry">
-        <rect>
-         <x>242</x>
-         <y>61</y>
-         <width>301</width>
-         <height>131</height>
-        </rect>
-       </property>
-      </widget>
       <widget class="QLineEdit" name="lineEditCin">
        <property name="geometry">
         <rect>
-         <x>70</x>
+         <x>80</x>
          <y>50</y>
          <width>113</width>
          <height>22</height>
@@ -185,6 +196,9 @@
          <height>16</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);</string>
+       </property>
        <property name="text">
         <string>id_SAV</string>
        </property>
@@ -198,11 +212,28 @@
          <height>401</height>
         </rect>
        </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+</string>
+       </property>
        <property name="text">
         <string/>
        </property>
        <property name="pixmap">
         <pixmap>../../aziz/png-clipart-til-death-do-us-apart-skull-illustration-t-shirt-clothing-skeleton-back-to-back-printing-tshirt-comics.png</pixmap>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_description">
+       <property name="geometry">
+        <rect>
+         <x>220</x>
+         <y>70</y>
+         <width>331</width>
+         <height>131</height>
+        </rect>
+       </property>
+       <property name="maxLength">
+        <number>8</number>
        </property>
       </widget>
       <zorder>label</zorder>
@@ -215,9 +246,9 @@
       <zorder>lineEdit_DateSAV</zorder>
       <zorder>label_8</zorder>
       <zorder>label_9</zorder>
-      <zorder>lineEdit_description</zorder>
       <zorder>lineEditCin</zorder>
       <zorder>label_13</zorder>
+      <zorder>lineEdit_description</zorder>
      </widget>
     </widget>
     <widget class="QWidget" name="tab">
@@ -232,6 +263,9 @@
         <width>591</width>
         <height>301</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
       </property>
       <property name="title">
        <string>afficher</string>
@@ -304,6 +338,9 @@
         <width>591</width>
         <height>301</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
       </property>
       <property name="title">
        <string>supprimer</string>
@@ -395,6 +432,9 @@
         <width>591</width>
         <height>301</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
       </property>
       <property name="title">
        <string>Modifier</string>
@@ -592,6 +632,9 @@
         <height>331</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
       <property name="title">
        <string>Trier</string>
       </property>
@@ -669,6 +712,9 @@
         <height>31</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
       <property name="text">
        <string>Rechercher</string>
       </property>
@@ -694,16 +740,152 @@
      <attribute name="title">
       <string>stat</string>
      </attribute>
+     <widget class="QPushButton" name="pushButton_6">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>90</y>
+        <width>151</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>afficher stat</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_8">
      <attribute name="title">
       <string>traitement</string>
      </attribute>
+     <widget class="QPushButton" name="pushButton_5">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>70</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Traité</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="id">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>70</y>
+        <width>113</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>70</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Id_Sav</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_9">
      <attribute name="title">
       <string>reboursement</string>
      </attribute>
+     <widget class="QLineEdit" name="lineEditcin">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>40</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEditprix">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>70</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ajouter_2">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>40</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>ajouter</string>
+      </property>
+     </widget>
+     <widget class="QTableView" name="tableView_remboursement">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>160</y>
+        <width>501</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_18">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>40</y>
+        <width>61</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>id_SAV</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_19">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>70</y>
+        <width>56</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Prix</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
