@@ -299,21 +299,6 @@ notifyIcon->showMessage("notification","produit réglé !",QSystemTrayIcon::Info
   }
 
 
- // QSqlQueryModel * Produit::ravitaillement()
- // { float nbr=0;
-  //    QSqlQueryModel * model= new QSqlQueryModel();
-  //    model->setQuery("SELECT * FROM commandes where (quantite_commande=0)" );
-   //   nbr++;
-//model->setHeaderData(0, Qt::Horizontal,QObject::tr("nom"));
-//model->setHeaderData(1, Qt::Horizontal,QObject::tr("id_commande"));
-//model->setHeaderData(2, Qt::Horizontal,QObject::tr("prenom"));
-//model->setHeaderData(3, Qt::Horizontal,QObject::tr("adresse"));
-//model->setHeaderData(4, Qt::Horizontal,QObject::tr("mail"));
-//model->setHeaderData(5, Qt::Horizontal,QObject::tr("quantite"));
-//model->setHeaderData(6, Qt::Horizontal,QObject::tr("prix_total"));
-      //return model ;
-
-//
 
 
   ravitaillement::ravitaillement(int a,int b,int c,QString d,QString e,QString f,int g,QString h,int nombre):Produit(a,b,c, d,e,f,g,h){
