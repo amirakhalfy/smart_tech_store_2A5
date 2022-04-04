@@ -408,5 +408,25 @@ void MainWindow::on_pushButton_clicked()
 
 
 
+//void MainWindow::on_pushButton_4_clicked()
+//{
+  //  int nombre=ui->le_nombre->text().toInt();
+
+   // ui->tableravitaillement->setModel(r.ajouteraustock(nombre));
+
+//}
+
+void MainWindow::on_pushButton_6_clicked()
+{
+
+    ui->tableravitaillement->setModel(P.ajouteraustock()) ;
 
 
+
+}
+
+void MainWindow::on_pushButton_7_clicked()
+{
+    ui->tableravitaillement->setModel(P.deletefromstock()) ;
+
+}

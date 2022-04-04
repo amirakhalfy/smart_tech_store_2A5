@@ -21,6 +21,8 @@ int getidproduit();
 int getreference();
 int getprix();
 int getetat();
+int getquantitec();
+
 QString getnomproduit();
 QString getquantite();
 QString getdate();
@@ -47,23 +49,41 @@ bool modifierProduit();
   QSqlQueryModel * etatdetraitement();
   QSqlQueryModel * etatregler();
  QSqlQueryModel * afficherstat();
+ QSqlQueryModel * ravitaillement();
+ QSqlQueryModel * ajouteraust(int n);
+ QSqlQueryModel *ajouteraustock();
+ QSqlQueryModel * deletefromstock();
+
+
  int  total_produit(int total){
      return total--;
  };
 
 list<Produit> l;
-private:
- int id_produit,reference,prix,etat;
+protected:
+ int id_produit,reference,prix,etat,quantite_c;
  QString nom_produit,quantite,date_ajout_produit,type;
 
 };
-class statproduit:public Produit{
+class ravitaillement:public Produit{
 
 public:
-    statproduit(){}
-    ~statproduit(){}
-   float pourcentagequantite;
-   float pourcentageprix;
+    ravitaillement(){}
+    ~ravitaillement(){}
+
+    ravitaillement(int a, int b, int c, QString d, QString, QString, int, QString, int);
+int nombre;
+QSqlQueryModel *ajouteraustoc();
+void setnombre(int nombre){
+ this->nombre=nombre;
+
+}
+int getnombre(){
+  return nombre;
+
+}
+
+
 
 
 

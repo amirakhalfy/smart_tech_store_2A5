@@ -59,12 +59,19 @@ private slots:
 
         void on_pushButton_clicked();
 
+        void on_pushButton_4_clicked();
+
+        void on_pushButton_6_clicked();
+
+        void on_pushButton_7_clicked();
+
 private:
     Ui::MainWindow *ui;
     Produit P;
  stat_combo *s;
  int selected=0;
     QStringList files;
+    ravitaillement r;
 
 };
 #endif // MAINWINDOW_H

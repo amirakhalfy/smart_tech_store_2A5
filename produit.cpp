@@ -20,6 +20,7 @@ this->reference=reference;
     this->etat=etat;
     this->type=type;
 
+
 }
 
 
@@ -80,6 +81,9 @@ void Produit::setetat(int etat){
 void Produit::settype(QString type){
     this->type=type;
 }
+int Produit::getquantitec(){
+return quantite_c;
+}
 
 bool Produit::ajouter(){
   QSqlQuery query;
@@ -100,6 +104,7 @@ bool Produit::ajouter(){
        query.bindValue(":etat",etat_string);
        query.bindValue(":quantite",quantite);
        query.bindValue(":type",type);
+
 
    return query.exec();
 
@@ -294,11 +299,102 @@ notifyIcon->showMessage("notification","produit réglé !",QSystemTrayIcon::Info
   }
 
 
+ // QSqlQueryModel * Produit::ravitaillement()
+ // { float nbr=0;
+  //    QSqlQueryModel * model= new QSqlQueryModel();
+  //    model->setQuery("SELECT * FROM commandes where (quantite_commande=0)" );
+   //   nbr++;
+//model->setHeaderData(0, Qt::Horizontal,QObject::tr("nom"));
+//model->setHeaderData(1, Qt::Horizontal,QObject::tr("id_commande"));
+//model->setHeaderData(2, Qt::Horizontal,QObject::tr("prenom"));
+//model->setHeaderData(3, Qt::Horizontal,QObject::tr("adresse"));
+//model->setHeaderData(4, Qt::Horizontal,QObject::tr("mail"));
+//model->setHeaderData(5, Qt::Horizontal,QObject::tr("quantite"));
+//model->setHeaderData(6, Qt::Horizontal,QObject::tr("prix_total"));
+      //return model ;
+
+//
 
 
+  ravitaillement::ravitaillement(int a,int b,int c,QString d,QString e,QString f,int g,QString h,int nombre):Produit(a,b,c, d,e,f,g,h){
+
+      this->nombre=nombre;
+
+  }
 
 
+ // QSqlQueryModel * Produit::ajouteraustock()
+
+ // {
+    //  QSqlQuery * q = new  QSqlQuery ();
+       //     QSqlQuery * q2 = new  QSqlQuery ();
+
+       //  QSqlQueryModel * model= new QSqlQueryModel();
+
+       //  q->prepare("SELECT  nom_produit,quantite,quantite_commande FROM produits,commandes WHERE produits.id_commande=commandes.id_commande and commandes.quantite_commande=0  ");
+        // q2->prepare("UPDATE produits SET quantite=:s  where id_commande in (select id_commande from commandes where  quantite_commande=0) ");
+        //  q2->bindValue(":s",30);
+       //  q->exec();
+        //  q2->exec();
+
+        //  model->setQuery(*q);
 
 
+        //  model->setHeaderData(0, Qt::Horizontal, QObject::tr("nom_produit"));
+        //  model->setHeaderData(1, Qt::Horizontal, QObject::tr("quantite"));
+         // model->setHeaderData(2, Qt::Horizontal, QObject::tr("quantite_commande"));
 
+
+        // return model ;
+
+ // }
+
+  QSqlQueryModel * Produit::ajouteraustock()
+
+  {
+      QSqlQuery * q = new  QSqlQuery ();
+            QSqlQuery * q2 = new  QSqlQuery ();
+
+         QSqlQueryModel * model= new QSqlQueryModel();
+
+         q->prepare("SELECT  nom_produit,quantite_commande FROM produits,commandes WHERE produits.id_commande=commandes.id_commande and commandes.quantite_commande=0  ");
+         q2->prepare("UPDATE commandes SET quantite_commande=quantite_commande+20  where id_commande in (select id_commande from commandes where  quantite_commande=0) ");
+          q2->bindValue(":quantite_commande",quantite);
+         q->exec();
+          q2->exec();
+
+          model->setQuery(*q);
+
+
+          model->setHeaderData(0, Qt::Horizontal, QObject::tr("nom_produit"));
+          model->setHeaderData(2, Qt::Horizontal, QObject::tr("quantite_commande"));
+
+
+         return model ;
+
+  }
+  QSqlQueryModel * Produit::deletefromstock()
+
+  {
+      QSqlQuery * q = new  QSqlQuery ();
+            QSqlQuery * q2 = new  QSqlQuery ();
+
+         QSqlQueryModel * model= new QSqlQueryModel();
+
+         q->prepare("SELECT  nom_produit,quantite_commande FROM produits,commandes WHERE produits.id_commande=commandes.id_commande and commandes.quantite_commande>0  ");
+         q2->prepare("UPDATE commandes SET quantite_commande=quantite_commande-1  where id_commande in (select id_commande from commandes where  quantite_commande>0)");
+          q2->bindValue(":quantite_commande",quantite);
+         q->exec();
+          q2->exec();
+
+          model->setQuery(*q);
+
+
+          model->setHeaderData(0, Qt::Horizontal, QObject::tr("nom_produit"));
+          model->setHeaderData(2, Qt::Horizontal, QObject::tr("quantite_commande"));
+
+
+         return model ;
+
+  }
 
