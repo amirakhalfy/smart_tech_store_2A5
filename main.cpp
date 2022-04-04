@@ -7,8 +7,6 @@
 #include <QSqlTableModel>
 #include <QTranslator>
 #include <QInputDialog>
-
-
 #include "connection.h"
 int main(int argc, char *argv[])
 {

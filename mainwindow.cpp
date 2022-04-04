@@ -422,11 +422,15 @@ void MainWindow::on_pushButton_6_clicked()
     ui->tableravitaillement->setModel(P.ajouteraustock()) ;
 
 
-
 }
 
 void MainWindow::on_pushButton_7_clicked()
 {
-    ui->tableravitaillement->setModel(P.deletefromstock()) ;
+        int id= ui->lineEdit_id->text().toInt();
+
+    ui->tableravitaillement->setModel(P.deletefromstock(id)) ;
 
 }
+
+
+

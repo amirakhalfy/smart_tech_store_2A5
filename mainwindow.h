@@ -65,6 +65,8 @@ private slots:
 
         void on_pushButton_7_clicked();
 
+        void on_refresh_clicked();
+
 private:
     Ui::MainWindow *ui;
     Produit P;

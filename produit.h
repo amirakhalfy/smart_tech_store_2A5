@@ -52,7 +52,7 @@ bool modifierProduit();
  QSqlQueryModel * ravitaillement();
  QSqlQueryModel * ajouteraust(int n);
  QSqlQueryModel *ajouteraustock();
- QSqlQueryModel * deletefromstock();
+ QSqlQueryModel * deletefromstock(int id);
 
 
  int  total_produit(int total){

@@ -323,31 +323,6 @@ notifyIcon->showMessage("notification","produit réglé !",QSystemTrayIcon::Info
   }
 
 
- // QSqlQueryModel * Produit::ajouteraustock()
-
- // {
-    //  QSqlQuery * q = new  QSqlQuery ();
-       //     QSqlQuery * q2 = new  QSqlQuery ();
-
-       //  QSqlQueryModel * model= new QSqlQueryModel();
-
-       //  q->prepare("SELECT  nom_produit,quantite,quantite_commande FROM produits,commandes WHERE produits.id_commande=commandes.id_commande and commandes.quantite_commande=0  ");
-        // q2->prepare("UPDATE produits SET quantite=:s  where id_commande in (select id_commande from commandes where  quantite_commande=0) ");
-        //  q2->bindValue(":s",30);
-       //  q->exec();
-        //  q2->exec();
-
-        //  model->setQuery(*q);
-
-
-        //  model->setHeaderData(0, Qt::Horizontal, QObject::tr("nom_produit"));
-        //  model->setHeaderData(1, Qt::Horizontal, QObject::tr("quantite"));
-         // model->setHeaderData(2, Qt::Horizontal, QObject::tr("quantite_commande"));
-
-
-        // return model ;
-
- // }
 
   QSqlQueryModel * Produit::ajouteraustock()
 
@@ -373,26 +348,29 @@ notifyIcon->showMessage("notification","produit réglé !",QSystemTrayIcon::Info
          return model ;
 
   }
-  QSqlQueryModel * Produit::deletefromstock()
+  QSqlQueryModel * Produit::deletefromstock(int id)
 
   {
       QSqlQuery * q = new  QSqlQuery ();
             QSqlQuery * q2 = new  QSqlQuery ();
 
          QSqlQueryModel * model= new QSqlQueryModel();
-
          q->prepare("SELECT  nom_produit,quantite_commande FROM produits,commandes WHERE produits.id_commande=commandes.id_commande and commandes.quantite_commande>0  ");
-         q2->prepare("UPDATE commandes SET quantite_commande=quantite_commande-1  where id_commande in (select id_commande from commandes where  quantite_commande>0)");
-          q2->bindValue(":quantite_commande",quantite);
+
+
          q->exec();
-          q2->exec();
+
 
           model->setQuery(*q);
 
 
           model->setHeaderData(0, Qt::Horizontal, QObject::tr("nom_produit"));
           model->setHeaderData(2, Qt::Horizontal, QObject::tr("quantite_commande"));
+          q2->prepare("UPDATE commandes SET quantite_commande=quantite_commande-1  where id_commande=:id and quantite_commande>0");
 
+          q2->bindValue(":quantite_commande",quantite);
+          q2->bindValue(":id",id);
+           q2->exec();
 
          return model ;
 
