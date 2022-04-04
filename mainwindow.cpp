@@ -24,6 +24,13 @@ MainWindow::MainWindow(QWidget *parent)
     model->setQuery("select nom from produit");
     ui->comboBox->setModel(model);
     ui->comboBox_2->setModel(model);
+
+    QSqlQueryModel* model2=new QSqlQueryModel();
+    model2->setQuery("select ID_COMMAND from COMMANDE");
+    ui->comboBox_id->setModel(model2);
+    ui->comboBox_id2->setModel(model2);
+    ui->comboBox_id3->setModel(model2);
+    ui->comboBox_id4->setModel(model2);
 }
 
 MainWindow::~MainWindow()
@@ -99,6 +106,7 @@ void MainWindow::on_pushButton_clicked()
     bool test=C.ajouter();
     if(test )
     {
+        ui->table_commande->setModel(cm.afficher());
         QMessageBox::information(nullptr, QObject::tr("ok"),
                 QObject::tr("ajouter effectué\n"
                             "click cancel to exit."),QMessageBox::Cancel);
@@ -114,7 +122,7 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::on_pushButton_3_clicked()
 {
     QSqlQuery query2;
-    int id=ui->lineEdit_supp->text().toInt();
+    int id= ui->comboBox_id3->currentText().toInt();
 
     query2.prepare("select id_command from COMMANDE where id_command=:id");
     query2.bindValue(":id",id);
@@ -140,7 +148,7 @@ void MainWindow::on_pushButton_3_clicked()
 
 
     if(test )
-    {
+    {ui->table_commande->setModel(cm.afficher());
         QMessageBox::information(nullptr, QObject::tr("ok"),
                 QObject::tr("supprimer effectué\n"
                             "click cancel to exit."),QMessageBox::Cancel);
@@ -166,23 +174,30 @@ void MainWindow::on_pushButton_2_clicked()
     query.exec();
     query.next();
     float prix=query.value(0).toFloat();
-cout<<prix;
 
 
 
-    int id=ui->lineEdit_idmodif->text().toInt();
+
+    int id= ui->comboBox_id4->currentText().toInt();
     int res=ui->lineEdit_55->text().toInt();
     QString nom=ui->lineEdit_1->text();
     QString prenom=ui->lineEdit_2->text();
     QString adresse=ui->lineEdit_3->text();
     QString mail=ui->lineEdit_4->text();
+    int etat=ui->lineEdit_5->text().toInt();
     Commande C(nom,prenom,adresse,mail,res,prix*res);
-
+    if(etat==0||etat==1)
+{
 
 
     bool test=C.modifier(id);
     if(test )
-    {
+    {query.prepare("update COMMANDE set etat=:etat where ID_COMMAND=:id");
+        query.bindValue(":etat",etat);
+        query.bindValue(":id",id);
+
+        query.exec();
+        ui->table_commande->setModel(cm.afficher());
         QMessageBox::information(nullptr, QObject::tr("ok"),
                 QObject::tr("modifier effectué\n"
                             "click cancel to exit."),QMessageBox::Cancel);
@@ -191,6 +206,11 @@ cout<<prix;
     else
         QMessageBox::information(nullptr, QObject::tr("not ok"),
                 QObject::tr("modifier non effectué\n"
+                            "click cancel to exit."),QMessageBox::Cancel);
+    }
+    else
+        QMessageBox::information(nullptr, QObject::tr("not ok"),
+                QObject::tr("etat non valid\n"
                             "click cancel to exit."),QMessageBox::Cancel);
 }
 
@@ -264,15 +284,35 @@ void MainWindow::on_tri_2_clicked()
 }
 
 void MainWindow::on_pushButton_5_clicked()
-{
+{ int id= ui->comboBox_id2->currentText().toInt();
 
     QSqlQuery query;
-     int id=ui->id->text().toInt();
+    QSqlQuery query2;
+    query2.prepare("SELECT etat FROM Commande where ID_COMMAND=:id ");
+    query2.bindValue(":id",id);
+    query2.exec();
+    query2.next();
+    int etat=query2.value(0).toInt();
+    if(etat==1)
+    {
+        QMessageBox::information(nullptr, QObject::tr("ok"),
+                               QObject::tr("commande deja annuler\n"
+                                           "click cancel to exit."),QMessageBox::Cancel);
 
+
+    }
+else
+    {
     query.prepare("update COMMANDE set etat= 1 where ID_COMMAND=:id");
     query.bindValue(":id",id);
 
      query.exec();
+     QMessageBox::information(nullptr, QObject::tr("ok"),
+                            QObject::tr("annuler avec succes\n"
+                                        "click cancel to exit."),QMessageBox::Cancel);
+     ui->table_commande->setModel(cm.afficher());
+
+    }
 
 }
 
@@ -288,8 +328,8 @@ void MainWindow::on_pushButton_6_clicked()
 void MainWindow::on_pushButton_7_clicked()
 {
 
+     int id= ui->comboBox_id->currentText().toInt();
 
-    int id=ui->id_fact->text().toInt();
     QSqlQuery query;
     query.prepare("SELECT etat FROM Commande where ID_COMMAND=:id ");
     query.bindValue(":id",id);
@@ -297,7 +337,8 @@ void MainWindow::on_pushButton_7_clicked()
     query.next();
     int etat=query.value(0).toInt();
     if(etat==1)
-    { QMessageBox::information(nullptr, QObject::tr("ok"),
+    {
+        QMessageBox::information(nullptr, QObject::tr("ok"),
                                QObject::tr("commande deja annuler\n"
                                            "click cancel to exit."),QMessageBox::Cancel);
 
@@ -313,6 +354,7 @@ void MainWindow::on_pushButton_7_clicked()
         query.bindValue(":id",id);
 
          query.exec();
+ui->table_commande->setModel(cm.afficher());
     QSqlDatabase db;
                         QTableView table_commande;
                         QSqlQueryModel * Modal=new  QSqlQueryModel();

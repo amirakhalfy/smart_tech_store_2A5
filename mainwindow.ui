@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -244,8 +244,8 @@
        <rect>
         <x>90</x>
         <y>20</y>
-        <width>411</width>
-        <height>221</height>
+        <width>451</width>
+        <height>241</height>
        </rect>
       </property>
       <property name="title">
@@ -440,14 +440,37 @@
         <string>id</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_idmodif">
+      <widget class="QComboBox" name="comboBox_id4">
        <property name="geometry">
         <rect>
          <x>120</x>
          <y>200</y>
+         <width>111</width>
+         <height>22</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_5">
+       <property name="geometry">
+        <rect>
+         <x>320</x>
+         <y>50</y>
          <width>113</width>
          <height>20</height>
         </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_21">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>50</y>
+         <width>47</width>
+         <height>14</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>etat</string>
        </property>
       </widget>
      </widget>
@@ -481,16 +504,6 @@
         <string>id_commande</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_supp">
-       <property name="geometry">
-        <rect>
-         <x>120</x>
-         <y>40</y>
-         <width>113</width>
-         <height>20</height>
-        </rect>
-       </property>
-      </widget>
       <widget class="QPushButton" name="pushButton_3">
        <property name="geometry">
         <rect>
@@ -502,6 +515,16 @@
        </property>
        <property name="text">
         <string>supp</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBox_id3">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>40</y>
+         <width>111</width>
+         <height>22</height>
+        </rect>
        </property>
       </widget>
      </widget>
@@ -681,16 +704,6 @@
         <string>facture</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="id_fact">
-       <property name="geometry">
-        <rect>
-         <x>140</x>
-         <y>70</y>
-         <width>113</width>
-         <height>20</height>
-        </rect>
-       </property>
-      </widget>
       <widget class="QLabel" name="label_2">
        <property name="geometry">
         <rect>
@@ -702,6 +715,16 @@
        </property>
        <property name="text">
         <string>id</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBox_id">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>70</y>
+         <width>111</width>
+         <height>22</height>
+        </rect>
        </property>
       </widget>
      </widget>
@@ -723,16 +746,6 @@
        <string>ID_COMMANDE</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="id">
-      <property name="geometry">
-       <rect>
-        <x>210</x>
-        <y>70</y>
-        <width>113</width>
-        <height>20</height>
-       </rect>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_5">
       <property name="geometry">
        <rect>
@@ -744,6 +757,16 @@
       </property>
       <property name="text">
        <string>annuler</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox_id2">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>70</y>
+        <width>111</width>
+        <height>22</height>
+       </rect>
       </property>
      </widget>
     </widget>
