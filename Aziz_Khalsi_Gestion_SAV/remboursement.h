@@ -19,6 +19,7 @@ public :
   QSqlQueryModel * afficherremboursement();
  ~remboursement(){}
  remboursement();
+ bool removeremboursement(int);
 };
 
 #endif // REMBOURSEMENT_H

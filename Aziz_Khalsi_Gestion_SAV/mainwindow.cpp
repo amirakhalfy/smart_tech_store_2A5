@@ -268,3 +268,53 @@ void MainWindow::on_ajouter_2_clicked()
         ui->tableView_remboursement->setModel(tmpremboursement.afficherremboursement());
 
 }
+
+void MainWindow::on_supprimer_2_clicked()
+{
+    QSqlQuery query2;
+    int id_sav=ui->lineEditsupp_2->text().toInt();
+
+    query2.prepare("select id_sav from sav where id_sav=:id_sav");
+    query2.bindValue(":id_sav",id_sav);
+
+    query2.exec();
+    query2.next();
+    int name=query2.value(0).toInt();
+
+
+    if(name==id_sav && id_sav!=0)
+    {
+        QMessageBox::information(nullptr, QObject::tr("ok"),
+                QObject::tr("id existe\n"
+                            "click cancel to exit."),QMessageBox::Cancel);
+
+    bool test=tmpremboursement.removeremboursement(id_sav);
+
+
+    if(test )
+    {
+        QMessageBox::information(nullptr, QObject::tr("ok"),
+                QObject::tr("supprimer effectué\n"
+                            "click cancel to exit."),QMessageBox::Cancel);
+
+    }
+    else
+        QMessageBox::information(nullptr, QObject::tr("not ok"),
+                QObject::tr("supprimer non effectué\n"
+                            "click cancel to exit."),QMessageBox::Cancel);
+}
+    else
+        QMessageBox::information(nullptr, QObject::tr("ok"),
+                QObject::tr("id n'existe pas\n"
+                            "click cancel to exit."),QMessageBox::Cancel);
+    ui->tableView_remboursement->setModel(tmpremboursement.afficherremboursement());
+
+}
+
+
+
+void MainWindow::on_supprimer_3_clicked()
+{
+    ui->tableView_remboursement->setModel(tmpremboursement.afficherremboursement());
+
+}

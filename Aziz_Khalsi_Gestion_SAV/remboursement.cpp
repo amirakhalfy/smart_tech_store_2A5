@@ -56,3 +56,10 @@ QSqlQueryModel * remboursement::afficherremboursement()
 
           return model;
       }
+
+bool remboursement::removeremboursement(int id_SAV){
+QSqlQuery query;
+query.prepare("DELETE FROM remboursement WHERE ID_SAV = :ID_SAV");
+query.bindValue(":ID_SAV", id_SAV);
+return    query.exec();
+}

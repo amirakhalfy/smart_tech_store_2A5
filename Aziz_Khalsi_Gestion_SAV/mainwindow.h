@@ -40,6 +40,10 @@ private slots:
 
     void on_ajouter_2_clicked();
 
+    void on_supprimer_2_clicked();
+
+    void on_supprimer_3_clicked();
+
 private:
     Ui::MainWindow *ui;
     SAV tmpSAV;
