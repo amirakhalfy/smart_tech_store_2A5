@@ -488,7 +488,7 @@ background-color: rgb(255, 255, 255);
       <widget class="QPushButton" name="modifier">
        <property name="geometry">
         <rect>
-         <x>290</x>
+         <x>360</x>
          <y>240</y>
          <width>93</width>
          <height>28</height>
@@ -501,7 +501,7 @@ background-color: rgb(255, 255, 255);
       <widget class="QPushButton" name="quitter_modif">
        <property name="geometry">
         <rect>
-         <x>400</x>
+         <x>470</x>
          <y>240</y>
          <width>93</width>
          <height>28</height>
@@ -642,17 +642,17 @@ background-color: rgb(255, 255, 255);
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>30</y>
+         <y>80</y>
          <width>461</width>
-         <height>241</height>
+         <height>191</height>
         </rect>
        </property>
       </widget>
       <widget class="QPushButton" name="pushButton_TriASC">
        <property name="geometry">
         <rect>
-         <x>490</x>
-         <y>50</y>
+         <x>40</x>
+         <y>30</y>
          <width>93</width>
          <height>28</height>
         </rect>
@@ -664,8 +664,8 @@ background-color: rgb(255, 255, 255);
       <widget class="QPushButton" name="pushButton_TriDESC">
        <property name="geometry">
         <rect>
-         <x>490</x>
-         <y>130</y>
+         <x>180</x>
+         <y>30</y>
          <width>93</width>
          <height>28</height>
         </rect>
@@ -678,7 +678,7 @@ background-color: rgb(255, 255, 255);
        <property name="geometry">
         <rect>
          <x>490</x>
-         <y>220</y>
+         <y>290</y>
          <width>93</width>
          <height>28</height>
         </rect>
@@ -706,8 +706,8 @@ background-color: rgb(255, 255, 255);
      <widget class="QPushButton" name="rechercher">
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>90</y>
+        <x>240</x>
+        <y>80</y>
         <width>93</width>
         <height>31</height>
        </rect>
@@ -925,7 +925,7 @@ background-color: rgb(255, 255, 255);
        <string notr="true">color: rgb(0, 0, 0);</string>
       </property>
       <property name="text">
-       <string>supprimer</string>
+       <string>Annuler</string>
       </property>
      </widget>
      <widget class="QPushButton" name="supprimer_3">
