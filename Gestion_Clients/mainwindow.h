@@ -5,6 +5,7 @@
 #include <QtSql>
 #include <QSqlDatabase>
 #include "client.h"
+#include "arduino.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -47,8 +48,11 @@ private slots:
 
     void on_pushButton_classer_clicked();
 
+    void on_nb_clicked();
+
 private:
     Ui::MainWindow *ui;
     Client tmpclient;
+    arduino A;
 };
 #endif // MAINWINDOW_H

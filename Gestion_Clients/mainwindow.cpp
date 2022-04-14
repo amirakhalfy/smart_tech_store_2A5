@@ -1,5 +1,3 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
 #include "client.h"
 #include <QSqlDatabase>
 #include <QSqlError>
@@ -12,6 +10,9 @@
 #include <QPrintDialog>
 #include <QPrinter>
 #include <QPainter>
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+
 
 
 
@@ -23,10 +24,28 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
-    ui->setupUi(this);
+   ui->setupUi(this);
     ui->tableView->setModel(tmpclient.afficherClient());
 
-}
+
+    int ret=A.connect_arduino(); // lancer la connexion à arduino
+        switch(ret){
+        case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
+            break;
+        case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino_port_name();
+           break;
+        case(-1):qDebug() << "arduino is not available";
+        }
+         QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label())); // permet de lancer
+         //le slot update_label suite à la reception du signal readyRead (reception des données).
+         //A.write_to_arduino("0");
+         A.read_from_arduino();
+         QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label2())); // permet de lancer
+         //le slot update_label suite à la reception du signal readyRead (reception des données).
+         //A.write_to_arduino("0");
+         A.read_from_arduino();
+         }
+
 
 MainWindow::~MainWindow()
 {
@@ -56,13 +75,13 @@ void MainWindow::on_ajouter_clicked()
         QMessageBox::information(nullptr, QObject::tr("ajouter un client"),
                           QObject::tr("client ajouté.\n"
                                       "Click Cancel to exit."), QMessageBox::Cancel);
-
+      A.write_to_arduino("1");
         }
           else{
               QMessageBox::critical(nullptr, QObject::tr("ajouter une client"),
                           QObject::tr("Erreur ! Client existant\n"
                                       "Click Cancel to exit."), QMessageBox::Cancel);
-
+    A.write_to_arduino("0");
         }
 
 
@@ -212,7 +231,7 @@ void MainWindow::on_pushButton_pdf_clicked()
                      const int columnCount =  table_client.model()->columnCount();
 
 
-                     const QString strTitle ="Document";
+                     const QString strTitle ="Clients";
 
 
                      out <<  "<html>\n"
@@ -318,5 +337,10 @@ void MainWindow::on_class3_clicked()
 void MainWindow::on_pushButton_classer_clicked()
 {
     ui->tableView_cla->setModel(tmpclient.classer()) ;
+
+}
+
+void MainWindow::on_nb_clicked()
+{
 
 }

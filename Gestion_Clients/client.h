@@ -27,6 +27,7 @@ public:
    QSqlQueryModel * classification3();
 
    QSqlQueryModel * classer();
+   int nb_client();
 
 
 

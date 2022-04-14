@@ -88,7 +88,7 @@ void Client::setprenom(QString n){
 
             QSqlQueryModel * model= new QSqlQueryModel();
 
-        model->setQuery("select * from clients");
+        model->setQuery("select cin,nom_clt,prenom_clt from clients");
         model->setHeaderData(0, Qt::Horizontal, QObject::tr("cin"));
         model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
         model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
@@ -100,13 +100,12 @@ void Client::setprenom(QString n){
   {
       QSqlQuery * q = new  QSqlQuery ();
                QSqlQueryModel * model = new  QSqlQueryModel ();
-               q->prepare("SELECT * FROM CLIENTS order by nom_clt ASC");
+               q->prepare("SELECT cin,nom_clt,prenom_clt FROM CLIENTS order by nom_clt ASC");
                q->exec();
                model->setQuery(*q);
                model->setHeaderData(0, Qt::Horizontal, QObject::tr("cin"));
                model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
                model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
-               model->setHeaderData(3, Qt::Horizontal, QObject::tr("id commande"));
 
 
                return model;
@@ -117,13 +116,12 @@ void Client::setprenom(QString n){
   {
             QSqlQuery * q = new  QSqlQuery ();
                    QSqlQueryModel * model = new  QSqlQueryModel ();
-                   q->prepare("SELECT * FROM CLIENTS order by NOM_CLT DESC");
+                   q->prepare("SELECT cin,nom_clt,prenom_clt FROM CLIENTS order by NOM_CLT DESC");
                    q->exec();
                    model->setQuery(*q);
                    model->setHeaderData(0, Qt::Horizontal, QObject::tr("cin"));
                    model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
                    model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
-                   model->setHeaderData(3, Qt::Horizontal, QObject::tr("id commande"));
 
 
                    return model;
@@ -135,7 +133,7 @@ void Client::setprenom(QString n){
       QSqlQuery * q = new  QSqlQuery ();
    QSqlQueryModel * model= new QSqlQueryModel();
 
-   q->prepare("SELECT * FROM clients WHERE  nom_clt LIKE '"+nom+"%'");
+   q->prepare("SELECT cin,nom_clt,prenom_clt FROM clients WHERE  nom_clt LIKE '"+nom+"%'");
    q->exec();
    model->setQuery(*q);
 
@@ -143,7 +141,6 @@ void Client::setprenom(QString n){
    model->setHeaderData(0, Qt::Horizontal, QObject::tr("cin"));
    model->setHeaderData(1, Qt::Horizontal, QObject::tr("nom"));
    model->setHeaderData(2, Qt::Horizontal, QObject::tr("prenom"));
-   model->setHeaderData(3, Qt::Horizontal, QObject::tr("id commande"));
 
 
 
@@ -244,6 +241,18 @@ void Client::setprenom(QString n){
      model->setHeaderData(1, Qt::Horizontal, QObject::tr("prenom"));
      model->setHeaderData(2, Qt::Horizontal, QObject::tr("categorie"));
      return model;
+ }
+
+
+ int Client::nb_client()
+ {
+     int nbEntree = 0;
+         QSqlQuery requete ("select count(cin) as nb from clients");
+         while (requete.next())
+         {
+             nbEntree++;
+         }
+         return nbEntree;
  }
 
 
