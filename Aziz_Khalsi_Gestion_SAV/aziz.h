@@ -6,7 +6,7 @@
 #include <QSqlDatabase>
 #include "SAV.h"
 #include "remboursement.h"
-
+#include "arduino.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -44,9 +44,13 @@ private slots:
 
     void on_supprimer_3_clicked();
 
+    void on_tableView_activated(const QModelIndex &index);
+
 private:
     Ui::MainWindow *ui;
     SAV tmpSAV;
     remboursement tmpremboursement;
+    arduino A;
+
 };
 #endif // MAINWINDOW_H

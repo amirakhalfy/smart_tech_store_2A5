@@ -1,7 +1,7 @@
 #include "SAV.h"
 #include "remboursement.h"
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "aziz.h"
+#include "ui_aziz.h"
 #include <QTabWidget>
 #include <QString>
 #include <QSqlQuery>

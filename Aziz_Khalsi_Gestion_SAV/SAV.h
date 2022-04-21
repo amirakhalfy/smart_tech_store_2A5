@@ -4,6 +4,7 @@
 #include <QSqlQuery>
 #include <QSqlQueryModel>
 #include <QTableWidget>
+#include "arduino.h"
 
 class SAV
 {

@@ -1,5 +1,5 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "aziz.h"
+#include "ui_aziz.h"
 #include "SAV.h"
 #include <QSqlDatabase>
 #include <QSqlError>
@@ -32,6 +32,24 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->tableView->setModel(tmpSAV.afficherSAV());
 
+    int ret=A.connect_arduino(); // lancer la connexion à arduino
+            switch(ret){
+            case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
+                break;
+            case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino_port_name();
+               break;
+            case(-1):qDebug() << "arduino is not available";
+            }
+             QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label())); // permet de lancer
+             //le slot update_label suite à la reception du signal readyRead (reception des données).
+             //A.write_to_arduino("0");
+             A.read_from_arduino();
+             QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label2())); // permet de lancer
+             //le slot update_label suite à la reception du signal readyRead (reception des données).
+             //A.write_to_arduino("0");
+             A.read_from_arduino();
+
+
 }
 
 MainWindow::~MainWindow()
@@ -62,11 +80,14 @@ void MainWindow::on_ajouter_clicked()
                           QObject::tr("SAV ajouté.\n"
                                       "Click Cancel to exit."), QMessageBox::Cancel);
 
+
+
         }
           else{
               QMessageBox::critical(nullptr, QObject::tr("ajouter un SAV"),
                           QObject::tr("Erreur ! SAV existant\n"
                                       "Click Cancel to exit."), QMessageBox::Cancel);
+
 
         }
 
@@ -200,11 +221,26 @@ void MainWindow::on_rechercher_clicked()
 void MainWindow::on_pushButton_5_clicked()
 {
 
-    QSqlQuery query;
-     int id=ui->id->text().toInt();
+    QSqlQuery query,query2;
+     int id_sav=ui->id->text().toInt();
 
-    query.prepare("update SAV set ETAT = 1 where ID_SAV=:id");
-    query.bindValue(":id",id);
+     query2.prepare("select id_sav from sav where id_sav=:id_sav");
+     query2.bindValue(":id_sav",id_sav);
+
+     query2.exec();
+     query2.next();
+     int name=query2.value(0).toInt();
+
+    query.prepare("update SAV set ETAT = 1 where ID_SAV=:id_sav");
+    query.bindValue(":id_sav",id_sav);
+
+    if(name==id_sav && id_sav!=0)
+        A.write_to_arduino("1");
+
+
+else
+        A.write_to_arduino("0");
+
 
      query.exec();
 

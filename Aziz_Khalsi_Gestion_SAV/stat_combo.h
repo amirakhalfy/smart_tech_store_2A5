@@ -1,11 +1,9 @@
 #ifndef STAT_COMBO_H
 #define STAT_COMBO_H
 #include <QDialog>
-
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
-
 #include <QtCharts/QChartView>
 #include <QtCharts/QBarSeries>
 #include <QtCharts/QBarSet>

@@ -2,6 +2,7 @@ QT       += core gui
 QT+= sql
  QT += charts
     QT += printsupport
+QT += serialport
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 QT+=sql
 CONFIG += c++11
@@ -19,21 +20,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     SAV.cpp \
+    arduino.cpp \
+    aziz.cpp \
     connection.cpp \
     main.cpp \
-    mainwindow.cpp \
     remboursement.cpp
 
 HEADERS += \
     SAV.h \
+    arduino.h \
+    aziz.h \
     connection.h \
-    mainwindow.h \
-    mainwindow.h \
     remboursement.h \
     stat_combo.h
 
 FORMS += \
-    mainwindow.ui \
+    aziz.ui \
     stat_combo.ui
 
 CONFIG += console

@@ -16,16 +16,37 @@
   <widget class="QLabel" name="label_stat">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>20</y>
-     <width>561</width>
+     <x>80</x>
+     <y>10</y>
+     <width>551</width>
      <height>331</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 0);</string>
    </property>
    <property name="text">
     <string/>
    </property>
   </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>-4</x>
+     <y>-7</y>
+     <width>741</width>
+     <height>371</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>../../depositphotos_78003560-stock-photo-abstract-statistics-frame-border.jpg</pixmap>
+   </property>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>label_stat</zorder>
  </widget>
  <resources/>
  <connections/>

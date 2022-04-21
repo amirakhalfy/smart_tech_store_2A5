@@ -1,6 +1,6 @@
 #include "SAV.h"
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
+#include "aziz.h"
+#include "ui_aziz.h"
 #include <QTabWidget>
 #include <QString>
 #include <QSqlQuery>
@@ -247,19 +247,19 @@ void SAV::setprenom(QString n){
 
 
             // Adds categories to the axes
-           // QBarCategoryAxis *axis = new QBarCategoryAxis();
+           QBarCategoryAxis *axis = new QBarCategoryAxis();
 
 
 
             // 1. Bar chart
-           // chart->setAxisX(axis, series);
+           chart->setAxisX(axis, series);
 
             // Used to change the palette
             QPalette pal = qApp->palette();
 
             // Change the color around the chart widget and text
             pal.setColor(QPalette::Window, QRgb(0xffffff));
-            pal.setColor(QPalette::WindowText, QRgb(0x404044));
+            pal.setColor(QPalette::WindowText, QRgb(0xf00020));
 
             // Apply palette changes to the application
             qApp->setPalette(pal);
@@ -270,7 +270,6 @@ void SAV::setprenom(QString n){
     chartView = new QChartView(chart,ui->label_stat);
     chartView->setRenderHint(QPainter::Antialiasing);
     chartView->setMinimumSize(400,400);
-
     chartView->show();
     }
 
