@@ -60,7 +60,7 @@ void MainWindow::on_ajouter_clicked()
         QString nom,prenom;
         cin=ui->lineEditCin->text().toInt();
 
-        nom=ui->lineEdit_nom->text();
+nom=ui->lineEdit_nom->text();
         prenom=ui->lineEdit_pren->text();
        // ui->tableView->setModel(tmpclient.afficherClient());
 
@@ -123,12 +123,16 @@ void MainWindow::on_supprimer_clicked()
         QMessageBox::information(nullptr, QObject::tr("supprimer un client"),
                           QObject::tr("client supprimé.\n"
                                       "Click Cancel to exit."), QMessageBox::Cancel);
+        A.write_to_arduino("3");
+
 
         }
           else{
               QMessageBox::critical(nullptr, QObject::tr("supprimer une client"),
                           QObject::tr("Erreur !.\n"
                                       "Click Cancel to exit."), QMessageBox::Cancel);
+              A.write_to_arduino("0");
+
 
         }
         }
@@ -175,12 +179,16 @@ void MainWindow::on_modifier_clicked()
     QMessageBox::information(nullptr, QObject::tr("modifier un client"),
                       QObject::tr("client modifié.\n"
                                   "Click Cancel to exit."), QMessageBox::Cancel);
+    A.write_to_arduino("2");
+
 
     }
       else{
           QMessageBox::critical(nullptr, QObject::tr("modifier une client"),
                       QObject::tr("Erreur !.\n"
                                   "Click Cancel to exit."), QMessageBox::Cancel);
+          A.write_to_arduino("0");
+
 
     }
     }
@@ -342,5 +350,34 @@ void MainWindow::on_pushButton_classer_clicked()
 
 void MainWindow::on_nb_clicked()
 {
+
+}
+
+void MainWindow::on_verif_clicked()
+{
+    Client d ;
+
+    int cin;
+    data=A.read_from_arduino();
+    cin=ui->lineEdit->placeholderText().toInt();
+
+    cin=data.toInt();
+
+                bool test=d.chercher(cin);
+
+                if(test)
+                {
+                    QMessageBox::information(nullptr, QObject::tr("Recherche"),
+                                            QObject::tr("client existe\n"
+                                                        "Cliquez sur cancel Pour Quitter."), QMessageBox::Cancel);
+                ui->statusbar->showMessage("recherche terminée");
+               }
+                else
+                {  QMessageBox::warning(nullptr, QObject::tr("erreur"),
+                                        QObject::tr("Echec.\n"
+                                                    "Click Cancel to exit."), QMessageBox::Cancel);}
+
+
+
 
 }

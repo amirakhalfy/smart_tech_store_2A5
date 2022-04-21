@@ -46,6 +46,9 @@ public:
     QTableView *tableView;
     QPushButton *afficher;
     QPushButton *nb;
+    QWidget *tab;
+    QPushButton *verif;
+    QLineEdit *lineEdit;
     QWidget *tab_3;
     QGroupBox *groupBox_3;
     QLabel *label_7;
@@ -2120,6 +2123,15 @@ public:
 "}"));
         nb->setIconSize(QSize(120, 90));
         tabAjouter->addTab(tab_2, QString());
+        tab = new QWidget();
+        tab->setObjectName(QStringLiteral("tab"));
+        verif = new QPushButton(tab);
+        verif->setObjectName(QStringLiteral("verif"));
+        verif->setGeometry(QRect(290, 100, 93, 28));
+        lineEdit = new QLineEdit(tab);
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        lineEdit->setGeometry(QRect(150, 100, 113, 22));
+        tabAjouter->addTab(tab, QString());
         tab_3 = new QWidget();
         tab_3->setObjectName(QStringLiteral("tab_3"));
         groupBox_3 = new QGroupBox(tab_3);
@@ -8557,7 +8569,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabAjouter->setCurrentIndex(0);
+        tabAjouter->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -8575,6 +8587,8 @@ public:
         afficher->setText(QApplication::translate("MainWindow", "Afficher", Q_NULLPTR));
         nb->setText(QApplication::translate("MainWindow", "nombre client", Q_NULLPTR));
         tabAjouter->setTabText(tabAjouter->indexOf(tab_2), QApplication::translate("MainWindow", "Ajouter", Q_NULLPTR));
+        verif->setText(QApplication::translate("MainWindow", "verif", Q_NULLPTR));
+        tabAjouter->setTabText(tabAjouter->indexOf(tab), QApplication::translate("MainWindow", "Page", Q_NULLPTR));
         groupBox_3->setTitle(QApplication::translate("MainWindow", "supprimer", Q_NULLPTR));
         label_7->setText(QApplication::translate("MainWindow", "cin", Q_NULLPTR));
         lineEditCin_supp->setText(QString());

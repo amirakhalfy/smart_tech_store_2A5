@@ -50,9 +50,12 @@ private slots:
 
     void on_nb_clicked();
 
+    void on_verif_clicked();
+
 private:
     Ui::MainWindow *ui;
     Client tmpclient;
     arduino A;
+    QByteArray data;
 };
 #endif // MAINWINDOW_H

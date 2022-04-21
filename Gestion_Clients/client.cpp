@@ -24,6 +24,20 @@ Client::Client(int cin, QString nom,  QString prenom)
             this->prenom=prenom;
 
 }
+bool Client::chercher(int IDD)
+{
+    QSqlQuery query;
+     QString IDD_string= QString::number(IDD);
+    query.exec("SELECT * FROM Clients WHERE cin='"+IDD_string+"'");
+
+
+    while (query.next()) {
+        return  true;
+
+    }
+    return false;
+
+}
 
 void Client::setcin(int n){
     cin=n;

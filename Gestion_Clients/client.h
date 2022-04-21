@@ -25,6 +25,8 @@ public:
    QSqlQueryModel * classification1();
    QSqlQueryModel * classification2();
    QSqlQueryModel * classification3();
+   bool chercher(int IDD);
+
 
    QSqlQueryModel * classer();
    int nb_client();
