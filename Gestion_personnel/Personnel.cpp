@@ -276,15 +276,7 @@ void Personnel::setprenom(QString n){
           return    query.exec();
 
   }
-  bool Personnel::remove_congee_Personnel(int cin)
-{ QSqlQuery query;
-          query.prepare("update PERSONNEL set etat_congee= 0, congee_from= null,congee_to= null where cin=:cin");
 
-          query.bindValue(":cin",cin);
-
-          return    query.exec();
-
-  }
 
 
   stat_combo::stat_combo(QWidget *parent) :

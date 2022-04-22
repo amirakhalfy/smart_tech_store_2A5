@@ -43,7 +43,24 @@ void MainWindow::on_ajouter_clicked()
         prenom=ui->lineEdit_pren->text();
         ui->tableView->setModel(tmpPersonnel.afficherPersonnel());
 
+        Personnel P(cin,nom,prenom);
 
+              bool test =  P.addPersonnel();
+                if(test)
+                {
+
+
+                QMessageBox::information(nullptr, QObject::tr("ajouter un personnels"),
+                                  QObject::tr("personnel ajouté.\n"
+                                              "Click Cancel to exit."), QMessageBox::Cancel);
+
+                }
+                  else{
+                      QMessageBox::critical(nullptr, QObject::tr("ajouter une personnel"),
+                                  QObject::tr("Erreur ! personnel existant\n"
+                                              "Click Cancel to exit."), QMessageBox::Cancel);
+
+                }
 
 }
 
@@ -250,44 +267,18 @@ void MainWindow::on_supprimer_2_clicked()
 
 void MainWindow::on_supprimer_3_clicked()
 {
-
-       QSqlQuery query2;
-       int cin=ui->lineEdit_cin22->text().toInt();
-
-
-
-            query2.prepare("select cin from personnel where cin=:cin");
-            query2.bindValue(":cin",cin);
-
-            query2.exec();
-            query2.next();
-            int name=query2.value(0).toInt();
+    QSqlQuery query11,query2;
+          int cin=ui->lineEditCin_supp_2->text().toInt();
+          query2.prepare("SELECT CIN FROM personnel WHERE cin = :cin");
+                  query2.bindValue(":cin",cin);
+                  query2.exec();
+                  query2.next();
+         query11.prepare("update personnel set etat_congee= 0, congee_from= null,congee_to= null where cin=:cin");
+         query11.bindValue(":cin",cin);
 
 
-            if(name==cin && cin!=0)
-            {
-                QMessageBox::information(nullptr, QObject::tr("ok"),
-                        QObject::tr("cin existe\n"
-                                    "click cancel to exit."),QMessageBox::Cancel);
-
-            bool test=tmpPersonnel.remove_congee_Personnel(cin);
-
-            if(test )
-            {
-                QMessageBox::information(nullptr, QObject::tr("ok"),
-                        QObject::tr("supprimer effectué\n"
-                                    "click cancel to exit."),QMessageBox::Cancel);
-
-            }
-            else
-                QMessageBox::information(nullptr, QObject::tr("not ok"),
-                        QObject::tr("supprimer non effectué\n"
-                                    "click cancel to exit."),QMessageBox::Cancel);
-        }
-            else
-                QMessageBox::information(nullptr, QObject::tr("ok"),
-                        QObject::tr("cin n'existe pas\n"
-                                    "click cancel to exit."),QMessageBox::Cancel);
+         query11.exec();
+         query11.next();
 
 
 
@@ -350,4 +341,14 @@ void MainWindow::on_pushButton_6_clicked()
 void MainWindow::on_pushButton_2_clicked()
 {
     ui->tableView_3->setModel(tmpPersonnel.stat1());
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    QSqlQuery query,query2;
+    query.prepare("update PERSONNEL set etat_congee= 2 where congee_to= SYSDATE");
+    query.exec();
+    query2.prepare("select  SYSDATE()");
+    query.exec();
+
 }

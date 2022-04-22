@@ -27,10 +27,8 @@ public:
    QSqlQueryModel * triernom();
    bool add_prime_Personnel(int prime,int cin);
    bool add_congee_Personnel(QDate congee_from,QDate congee_to,int cin);
-    bool remove_congee_Personnel(int cin);
       QSqlQueryModel * rechercher_congee(int etat_congee);
       QSqlQueryModel * stat1();
-void on_supprimer_3_clicked();
      QSqlQueryModel * stat();
 
    ~Personnel(){}
